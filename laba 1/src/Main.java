@@ -148,7 +148,7 @@ public class Main {
                         String weekday;
                         System.out.print("Введите день недели с маленькой буквы, " +
                                 "иначе он не будет считан: ");
-                        weekday = scanner.next(); // использывала только next(), т.к он дожидается ввода кокого-либо
+                        weekday = scanner.next(); // использовала только next(), т.к он дожидается ввода какого-либо
                         Metod t = new Metod(); // символа, а также не считывает остальные символы после пробела
                         System.out.println("Дни недели: ");
                         t.printDays(weekday);
