@@ -10,13 +10,13 @@ public class Main {
             case 1: {
                 int num;
                 System.out.print("Номер подзадания: ");
-                num= scanner.nextInt();
+                num = scanner.nextInt();
                 switch (num){
                     case 2: {
                         int x;
                         System.out.print("Введите число x: ");
                         x = scanner.nextInt();
-                        if (x>=10) {
+                        if (x>=10) { //проверка на условие, что знаков в числе не менее двух
                             Metod t = new Metod();
                             int sum;
                             sum = t.sumLastNums (x);
@@ -60,7 +60,7 @@ public class Main {
                         boolean answer;
                         answer = t.isDivisor(a,b);
                         System.out.println("Если одно из чисел равняется 0, то при делении другого числа " +
-                                "на 0 получается 0 => целое число. Тоесть true. Если же оба числа равны" +
+                                "на 0 получается 0 => целое число. То есть true. Если же оба числа равны" +
                                 " 0, то деление не возможно, поэтому false.");
                         System.out.println(answer);
                         break;
