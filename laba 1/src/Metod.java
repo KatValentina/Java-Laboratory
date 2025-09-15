@@ -185,4 +185,106 @@ public class Metod {
         System.out.println("Вы угадали!\n" +
                 "Вы отгадали число за "+k+" колличества попыток.");
     }
+
+    //доп метод для заполнения массива
+    public int[] addArr(int n) {
+        int[] arr = new int[n];
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Надо заполнить массив числами.");
+        int a;
+        for (int i=0;i<n;i++) {
+            System.out.print("Введите элемент массива: ");
+            a = scanner.nextInt();
+            arr[i] = a;
+        }
+        return arr;
+    }
+
+    //доп метод для вывода массива
+    public void printArr(int[] arr) {
+        System.out.print("Массив: [ ");
+        for (int j : arr) {
+            System.out.print(j + " ");
+        }
+        System.out.println("]");
+    }
+
+    // 4.2 задание
+    public int findLast(int[] arr, int x) {
+        printArr(arr);
+        for (int i= arr.length-1;i>=0;i--) {
+            if (x==arr[i]) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+     //4.4 задание
+    public int[]add(int[] arr, int x, int pos) {
+        int[] arr1 = new int[arr.length+1];
+        for (int i=0;i<pos;i++) { //идём до позиции
+            arr1[i] = arr[i];
+        }
+        arr1[pos] = x; //вставляем новый символ на позицию
+        for (int i=pos;i < arr.length;i++) { //идём дальше, не забывая символ, который был до этого
+            arr1[i+1]=arr[i]; // в изначальном массиве
+        }
+        return arr1;
+    }
+
+    // 4.6 задание
+    public void reverse(int[] arr) {
+        int a,b;
+        int step=1;//отступ от конца массива
+        for(int i=0;i<(arr.length/2); i++) {
+            a = arr[i];
+            b = arr.length-step; //индекс изменяемого символа
+            arr[i] = arr[b];
+            arr[b] = a;
+            step++;
+        }
+    }
+
+    // 4.8 задание
+    public int[] concat(int[] arr1,int[] arr2) {
+        int len = arr1.length+arr2.length;
+        int l1 = arr1.length;
+        int[] arrNew = new int[len];
+        for (int i = 0;i<l1;i++) { // заполняем значениями 1 массива
+            arrNew[i] = arr1[i];
+        }
+        for (int i = len-1;i>=arr1.length;i--) { // заполняем значениями 2 массива
+            arrNew[i] = arr2[i-l1];
+        }
+        return arrNew;
+    }
+
+    //4.10 задание
+    public int[] deleteNegative(int[] arr) {
+        int k = 0; // кол-во отриц. чисел в массиве
+        for (int j=0;j<arr.length;j++) {
+            if (arr[j] < 0) {
+                k++;
+            }
+        }
+        if (k==0) {
+            return arr;
+        } else {
+            int len = arr.length - k; // размер нового массива без отриц. чисел
+            if (len == 0) { // если весь массив был из отриц. чисел
+                return new int[0];
+            } else {
+                int[] newArr = new int[len];
+                int j = 0; // индексы заполнения нового массива
+                for (int i=0;i<arr.length;i++) {
+                    if (arr[i]>=0) {
+                        newArr[j] = arr[i];
+                        j++;
+                    }
+                }
+                return newArr;
+            }
+        }
+    }
 }

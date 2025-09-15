@@ -1,5 +1,4 @@
 import java.util.Scanner;
-import java.util.Random;
 
 public class Main {
     public static void main(String[] args) {
@@ -83,7 +82,8 @@ public class Main {
                         System.out.println("Полученная сумма последних цифр: "+a);
                         break;
                     }
-                    default: System.out.println("Нет такого подзадания"); break;
+                    default: System.out.println("Нет такого подзадания");
+                    break;
                 }
             }
             case 2: {
@@ -154,7 +154,8 @@ public class Main {
                         t.printDays(weekday);
                         break;
                     }
-                    default: System.out.println("Нет такого подзадания"); break;
+                    default: System.out.println("Нет такого подзадания");
+                    break;
                 }
                 break;
             }
@@ -219,14 +220,125 @@ public class Main {
                         t.guessGame();
                         break;
                     }
+                    default: System.out.println("Нет такого подзадания");
+                    break;
                 }
                 break;
             }
-            case 4:
-            {
+            case 4: {
+                int num;
+                System.out.print("Номер подзадания: ");
+                num = scanner.nextInt();
+                switch (num) {
+                    case 2: {
+                        int n,x,answer;
+                        System.out.print("Введите размер массива: ");
+                        n = scanner.nextInt();
+                        while (n<=0) {
+                            System.out.print("Массив такого размера не возможно создать (или вы ввели 0). " +
+                                    "Введите новый: ");
+                            n = scanner.nextInt();
+                        }
+                        Metod t = new Metod();
+                        int[] arr = t.addArr(n);
+                        System.out.print("Введите число x: ");
+                        x = scanner.nextInt();
+                        answer = t.findLast(arr,x);
+                        System.out.println("\nИндекс последнего вхождения " +
+                                "числа x в массив: " + answer);
+                        break;
+                    }
+                    case 4: {
+                        int n,x,pos;
+                        System.out.print("Введите размер массива: ");
+                        n = scanner.nextInt();
+                        while (n<=0) {
+                            System.out.print("Массив такого размера не возможно создать (или вы ввели 0). " +
+                                    "Введите новый: ");
+                            n = scanner.nextInt();
+                        }
+                        Metod t = new Metod();
+                        int[] arr = t.addArr(n);
+                        t.printArr(arr); //выводим изначальный массив
+                        System.out.print("Введите число x, которое будет вставлено в массив: ");
+                        x = scanner.nextInt();
+                        System.out.print("Введите позицию, на которую будет вставлено число x" +
+                                "(индексация с 0): ");
+                        pos = scanner.nextInt();
+                        while (pos<0 || pos-n>=0) { //вставити число можно только в массив, но не за его пределы
+                            System.out.print("Невозможно вставить x на эту позицию. " +
+                                    "Введите заново: ");
+                            pos = scanner.nextInt();
+                        }
+                        int[] arr1 = t.add(arr,x,pos);
+                        System.out.print("Новый ");
+                        t.printArr(arr1);
+                        break;
+                    }
+                    case 6: {
+                        int n;
+                        System.out.print("Введите размер массива: ");
+                        n = scanner.nextInt();
+                        while (n<=0) {
+                            System.out.print("Массив такого размера не возможно создать (или вы ввели 0). " +
+                                    "Введите новый: ");
+                            n = scanner.nextInt();
+                        }
+                        Metod t = new Metod();
+                        int[] arr = t.addArr(n);
+                        t.printArr(arr); //выводим изначальный массив
+                        t.reverse(arr);
+                        t.printArr(arr);
+                        break;
+                    }
+                    case 8: {
+                        int n,n2;
+                        Metod t = new Metod();
+                        System.out.print("Введите размер 1 массива: ");
+                        n = scanner.nextInt();
+                        while (n<=0) {
+                            System.out.println("Массив такого размера не возможно создать (или вы ввели 0). " +
+                                    "Введите новый: ");
+                            n = scanner.nextInt();
+                        }
+                        int[] arr = t.addArr(n); //заполняем 1 массив
+                        t.printArr(arr);
+                        System.out.print("Введите размер 2 массива: ");
+                        n2 = scanner.nextInt();
+                        while (n2<=0) {
+                            System.out.println("Массив такого размера не возможно создать (или вы ввели 0). " +
+                                    "Введите новый: ");
+                            n2 = scanner.nextInt();
+                        }
+                        int[] arr2 = t.addArr(n2); //заполняем 2 массив
+                        t.printArr(arr2);
+                        int[] arr3 = t.concat(arr,arr2); // массив под 1+2 массивов
+                        t.printArr(arr3);
+                        break;
+                    }
+                    case 10: {
+                        int n;
+                        Metod t = new Metod();
+                        System.out.print("Введите размер массива: ");
+                        n = scanner.nextInt();
+                        while (n<=0) {
+                            System.out.print("Массив такого размера не возможно создать (или вы ввели 0). " +
+                                    "Введите новый: ");
+                            n = scanner.nextInt();
+                        }
+                        int[] arr = t.addArr(n);
+                        t.printArr(arr); // выводим изначальный массив
+                        int[] arr1 = t.deleteNegative(arr);
+                        t.printArr(arr1); //выводим получившийся массив
+                        break;
+                    }
+                    default: System.out.println("Нет такого подзадания");
+                    break;
+                }
                 break;
             }
-            default: System.out.println("Нет такого задания"); break;
+            default: System.out.println("Нет такого задания");
+            break;
         }
     }
 }
