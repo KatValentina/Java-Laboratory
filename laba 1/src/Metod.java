@@ -159,7 +159,7 @@ public class Metod {
     public void leftTriangle(int x) {
         for (int i = 1;i <= x;i++) {
             int y = 1;
-            while (y <= i) {
+            while (y <= i) { // т.к число звёздочек соответствует номеру строки (i)
                 System.out.print("*");
                 y++;
             }
