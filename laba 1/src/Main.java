@@ -134,8 +134,9 @@ public class Main {
                         int x;
                         System.out.print("Введите число x: ");
                         x = scanner.nextInt();
-                        if (x<=0 || x>140) { // максимальный возраст
-                            System.out.println("Нет отрицательного и равного 0 кол-ва лет");
+                        if (x<=0 || x>100) { // максимальный возраст
+                            System.out.println("Нет отрицательного и равного 0 кол-ва лет или возраст " +
+                                    "слишком большой!");
                         } else {
                             Metod t = new Metod();
                             String answer;
