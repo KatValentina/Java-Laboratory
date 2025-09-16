@@ -32,15 +32,15 @@ public class Metod {
 
     // 1.10 задание
     public int lastNumSum(int a, int b) {
-        if (a<0) { // Если было введено отриц. число меняем на полож.,
-            a=a*(-1)%10; // чтобы не мешало при подсчёте
+        if (a<0) {
+            a=a*(-1)%10;
         } else {
-            a=a%10; // находим число из разряда единиц
+            a=a%10;
         }
-        if (b<0) { // также поступаем и с переменной b
+        if (b<0) {
             b=b*(-1)%10;
         } else {
-            b=b%10; //аналогично
+            b=b%10;
         }
         return a+b;
     }
@@ -142,10 +142,10 @@ public class Metod {
 
     // 3.6 задание
     public boolean equalNum(int x) {
-        if (x < 0) { // если пользыватель ввёл отриц. число
+        if (x < 0) {
             x = -x;
         }
-        int c = x%10; // находим последнее число
+        int c = x%10;
         while (x > 0) {
             if (x % 10 != c) {
                 return false;
@@ -172,7 +172,7 @@ public class Metod {
         Random random = new Random();
         int comp = random.nextInt(0,10);
         int k = 1; // счётчик попыток
-        int user; // под число пользывателя
+        int user; // под число пользователя
         System.out.print("Введите число от 0 до 9: ");
         Scanner scanner = new Scanner(System.in);
         user = scanner.nextInt();
@@ -183,7 +183,7 @@ public class Metod {
             user = scanner.nextInt();
         }
         System.out.println("Вы угадали!\n" +
-                "Вы отгадали число за "+k+" колличества попыток.");
+                "Вы отгадали число за "+k+" количества попыток.");
     }
 
     //доп метод для заполнения массива
