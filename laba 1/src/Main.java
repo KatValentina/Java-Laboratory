@@ -16,7 +16,7 @@ public class Main {
                         int x;
                         System.out.print("Введите число x: ");
                         x = scanner.nextInt();
-                        if (x>=10) { //проверка на условие, что знаков в числе не менее двух
+                        if (x>=10) { //проверка на условие, что знаков в числе не менее двух знаков
                             Metod t = new Metod();
                             int sum;
                             sum = t.sumLastNums (x);
@@ -134,7 +134,7 @@ public class Main {
                         int x;
                         System.out.print("Введите число x: ");
                         x = scanner.nextInt();
-                        if (x<=0) {
+                        if (x<=0 || x>140) { // максимальный возраст
                             System.out.println("Нет отрицательного и равного 0 кол-ва лет");
                         } else {
                             Metod t = new Metod();
