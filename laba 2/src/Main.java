@@ -20,7 +20,6 @@ public class Main {
 
                         System.out.println("Имя человека должно быть не менее 2 знаков, не содержать знаки препинания,\nтабуляции, пробелы, " +
                                 "а также цифры. Но может содержать дефис. Принимается имя, написанное только кириллицей.");
-
                         person1.createHuman();
                         person2.createHuman();
                         person3.createHuman();
@@ -32,13 +31,41 @@ public class Main {
                         break;
                     }
                     case 3: {
+                        System.out.println("Сейчас будет создано 3 человека." +
+                                " Введите данные.");
+                        Name person1 = new Name();
+                        Name person2 = new Name();
+                        Name person3 = new Name();
 
+                        System.out.println("Имя человека должно быть не менее 2 знаков, не содержать знаки препинания,\nтабуляции, пробелы, " +
+                                "а также цифры. Но может содержать дефис. Принимается имя, написанное только кириллицей.");
+                        person1.createName();
+                        person2.createName();
+                        person3.createName();
+
+                        System.out.println("Созданные люди: ");
+                        System.out.println(person1.toString());
+                        System.out.println(person2.toString());
+                        System.out.println(person3.toString());
                         break;
                     }
+                    default: System.out.println("Нет такого подзадания");
+                    break;
                 }
-                break;
             }
             case 2: {
+                Department depIT = new Department("IT");
+                System.out.println("Сейчас будет создано 3 человека");
+                Worker person1 = new Worker("Петров",depIT);
+                Worker person2 = new Worker("Козлов",depIT);
+                Worker person3 = new Worker("Сидоров",depIT);
+
+                depIT.setChief(person2);
+
+                System.out.println("Созданные люди: ");
+                System.out.println(person1.toString());
+                System.out.println(person2.toString());
+                System.out.println(person3.toString());
                 break;
             }
             case 3: {

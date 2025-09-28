@@ -19,9 +19,54 @@ public class Name {
 
     //стандартное имя (по умолчанию)
     public Name() {
-        this.Surname = "Иванов";
-        this.NaMe = "Иван";
-        this.MiddleN = "Иванов";
+        this.Surname = null;
+        this.NaMe = null;
+        this.MiddleN = null;
+    }
+
+    @Override
+    public String toString() {
+        String fullname=null;
+
+        if (Surname!=null && !Surname.isEmpty()) {
+            fullname = Surname;
+        }
+
+        if (NaMe!=null && !NaMe.isEmpty()) {
+            if (fullname!=null) {
+                fullname = fullname+" "+ NaMe;
+            } else {
+                fullname = NaMe;
+            }
+        }
+
+        if (MiddleN!=null && !MiddleN.isEmpty()) {
+            if (fullname!=null) {
+                fullname = fullname+" "+ MiddleN;
+            } else {
+                fullname = MiddleN;
+            }
+        }
+
+        if (fullname == null) {
+            return "Вы не создали Имя";
+        } else {
+            return fullname;
+        }
+    }
+
+    public void createName() {
+        Scanner scanner = new Scanner(System.in);
+        String sname,name,miname;
+        System.out.print("Введите фамилию человека: ");
+        sname = scanner.nextLine();
+        setSurname(sname);
+        System.out.print("Введите имя человека: ");
+        name = scanner.nextLine();
+        setNaMe(name);
+        System.out.print("Введите отчество человека: ");
+        miname = scanner.nextLine();
+        setMiddleN(miname);
     }
 
     public String inputName(String name) {
@@ -53,18 +98,5 @@ public class Name {
         this.MiddleN = MiddleN;
     }
 
-    public void createName() {
-        Scanner scanner = new Scanner(System.in);
-        String sname,name,miname;
-        System.out.print("Введите фамилию человека: ");
-        sname = scanner.nextLine();
-        setSurname(sname);
-        System.out.print("Введите имя человека: ");
-        name = scanner.nextLine();
-        setNaMe(name);
-        System.out.print("Введите отчество человека: ");
-        miname = scanner.nextLine();
-        setMiddleN(miname);
-    }
 
 }

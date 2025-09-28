@@ -39,12 +39,12 @@ public class Human {
         Scanner scanner = new Scanner(System.in);
         Metods t = new Metods();
         boolean c;
-        c = t.correctName(Name);
+        c = t.CorrectName(Name);
 
         while (!c) {
             System.out.print("Неверно введённое имя. Введите другое: ");
             Name = scanner.nextLine();
-            c = t.correctName(Name);
+            c = t.CorrectName(Name);
         }
         this.Name = Name;
     }
