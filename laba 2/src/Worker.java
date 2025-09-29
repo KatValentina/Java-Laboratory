@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Worker {
     String Name;
     private Department Unit;
@@ -16,6 +18,19 @@ public class Worker {
 
     public void setUnit(Department Unit) {
         this.Unit = Unit;
+
+        // Добавляем в новый отдел
+        if (this.Unit != null) {
+            this.Unit.addWorker(this);
+        }
+
+    }
+
+    public Worker[] getAllColleagues() {
+        if (Unit != null) {
+            return Unit.getWorkers();
+        }
+        return new Worker[0]; // Возвращаем пустой массив, если нет отдела
     }
 
     public Worker(String Name) {
@@ -25,7 +40,7 @@ public class Worker {
 
     public Worker(String Name, Department Unit) {
         this.Name = Name;
-        this.Unit = Unit;
+        setUnit(Unit);
     }
 
     @Override
@@ -34,8 +49,8 @@ public class Worker {
             if (Unit.isChief(this)) {
                 return Name+" начальник отдела "+Unit.getTitle();
             } else {
-                if (Unit.getChief().getName()==null) {
-                   return Name+" работает в отделе "+Unit.getTitle()+", у которого нет начальника";
+                if (Unit.getChief()==null || Unit.getChief().getName()==null) {
+                    return Name+" работает в отделе "+Unit.getTitle()+", у которого нет начальника";
                 } else {
                     return Name+" работает в отделе "+Unit.getTitle()+", начальник которого "+Unit.getChief().getName();
                 }

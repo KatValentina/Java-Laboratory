@@ -12,41 +12,37 @@ public class Main {
                 num = scanner.nextInt();
                 switch (num) {
                     case 2: {
-                        System.out.println("Сейчас будет создано 3 человека." +
-                                " Введите данные.");
-                        Human person1 = new Human();
-                        Human person2 = new Human();
-                        Human person3 = new Human();
-
-                        System.out.println("Имя человека должно быть не менее 2 знаков, не содержать знаки препинания,\nтабуляции, пробелы, " +
-                                "а также цифры. Но может содержать дефис. Принимается имя, написанное только кириллицей.");
-                        person1.createHuman();
-                        person2.createHuman();
-                        person3.createHuman();
+                        int n;
+                        System.out.print("Сколько человек вы хотите создать: ");
+                        n = scanner.nextInt();
+                        while (n<=0) {
+                            System.out.println("Не возможно создать столько человек, введите другое число: ");
+                            n= scanner.nextInt();
+                        }
+                        Metods t = new Metods();
+                        Human [] arr = t.add(n);
 
                         System.out.println("Созданные люди: ");
-                        System.out.println(person1.toString());
-                        System.out.println(person2.toString());
-                        System.out.println(person3.toString());
+                        for (Human j : arr) {
+                            System.out.println(j.toString());
+                        }
                         break;
                     }
                     case 3: {
-                        System.out.println("Сейчас будет создано 3 человека." +
-                                " Введите данные.");
-                        Name person1 = new Name();
-                        Name person2 = new Name();
-                        Name person3 = new Name();
-
-                        System.out.println("Имя человека должно быть не менее 2 знаков, не содержать знаки препинания,\nтабуляции, пробелы, " +
-                                "а также цифры. Но может содержать дефис. Принимается имя, написанное только кириллицей.");
-                        person1.createName();
-                        person2.createName();
-                        person3.createName();
+                        int n;
+                        System.out.print("Сколько человек вы хотите создать: ");
+                        n = scanner.nextInt();
+                        while (n<=0) {
+                            System.out.println("Не возможно создать столько человек, введите другое число: ");
+                            n= scanner.nextInt();
+                        }
+                        Metods t = new Metods();
+                        Name [] arr = t.addArr(n);
 
                         System.out.println("Созданные люди: ");
-                        System.out.println(person1.toString());
-                        System.out.println(person2.toString());
-                        System.out.println(person3.toString());
+                        for (Name j : arr) {
+                            System.out.println(j.toString());
+                        }
                         break;
                     }
                     default: System.out.println("Нет такого подзадания");
@@ -69,9 +65,46 @@ public class Main {
                 break;
             }
             case 3: {
+                Department depIT = new Department("IT");
+                Department depHR = new Department("HR");
+                System.out.println("Сейчас будет создано 3 человека");
+                Worker person1 = new Worker("Петров",depIT);
+                Worker person2 = new Worker("Козлов",depIT);
+                Worker person3 = new Worker("Сидоров",depIT);
+                Worker person4 = new Worker("Терещенко",depHR);
+                Worker person5 = new Worker("Волегова",depHR);
+
+                depIT.setChief(person2);
+
+                System.out.println("Созданные люди: ");
+                System.out.println(person1.toString());
+                System.out.println(person2.toString());
+                System.out.println(person3.toString());
+                System.out.println(person4.toString());
+                System.out.println(person5.toString());
+
+                System.out.println("=== Все сотрудники IT отдела (через Петрова) ===");
+                Worker[] allItWorkers = person1.getAllColleagues();
+                for (int i = 0; i < allItWorkers.length; i++) {
+                    System.out.println((i + 1) + ". " + allItWorkers[i].getName());
+                }
                 break;
             }
             case 4: {
+                int n;
+                System.out.print("Сколько человек вы хотите создать: ");
+                n = scanner.nextInt();
+                while (n<=0) {
+                    System.out.println("Не возможно создать столько человек, введите другое число: ");
+                    n= scanner.nextInt();
+                }
+                Metods t = new Metods();
+                Name [] arr = t.addArr(n);
+
+                System.out.println("Созданные люди: ");
+                for (Name j : arr) {
+                    System.out.println(j.toString());
+                }
                 break;
             }
             case 5: {

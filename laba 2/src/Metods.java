@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Metods {
 
     //проверка имени для задания 1.2
@@ -35,4 +37,31 @@ public class Metods {
             return true;
         }
     }
+
+    //доп метод для заполнения массива 1.3
+    public Name[] addArr(int n) {
+        Name[] arr = new Name[n];
+        System.out.println("Имя человека должно быть не менее 2 знаков, не содержать знаки препинания,\nтабуляции, пробелы, " +
+                "а также цифры. Но может содержать дефис. Принимается имя, написанное только кириллицей.");
+        for (int i=0;i<n;i++) {
+            Name person = new Name();
+            person.createName();
+            arr[i] = person;
+        }
+        return arr;
+    }
+
+    //доп метод для заполнения массива 1.2
+    public Human[] add(int n) {
+        Human[] arr = new Human[n];
+        System.out.println("Имя человека должно быть не менее 2 знаков, не содержать знаки препинания,\nтабуляции, пробелы, " +
+                "а также цифры. Но может содержать дефис. Принимается имя, написанное только кириллицей.");
+        for (int i=0;i<n;i++) {
+            Human person = new Human();
+            person.createHuman();
+            arr[i] = person;
+        }
+        return arr;
+    }
+
 }

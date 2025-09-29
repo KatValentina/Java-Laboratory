@@ -1,6 +1,10 @@
+import java.util.Scanner;
+
 public class Department {
     private String Title;
     private Worker Chief;
+    private Worker[] workers;//3 задание
+    private int workerCount;
 
     public String getTitle() {
         return Title;
@@ -9,6 +13,20 @@ public class Department {
     public Worker getChief() {
         return Chief;
     }
+
+    public int getWorkerCount() { //3 задание
+        return workerCount;
+    }
+
+    // конструктор для 3 задания
+    public Worker[] getWorkers() {
+        Worker[] result = new Worker[workerCount];
+        for (int i = 0; i < workerCount; i++) {
+            result[i] = workers[i];
+        }
+        return result;
+    }
+
 
     public void setChief(Worker chief) {
         Chief = chief;
@@ -21,6 +39,8 @@ public class Department {
     public Department(String Title) {
         this.Title = Title;
         this.Chief = null;
+        this.workers = new Worker[50];// 3 задание, максимум сотрудников
+        this.workerCount = 0;
     }
 
     public boolean isChief(Worker worker) {
@@ -34,6 +54,27 @@ public class Department {
     public Department(String Title, Worker Chief) {
         this.Title = Title;
         this.Chief = Chief;
+        this.workers = new Worker[50]; // 3 задание, максимум сотрудников
+        this.workerCount = 0;
+
+    }
+
+    // Проверка наличия сотрудника в отделе
+    private boolean containsWorker(Worker worker) {
+        for (int i = 0; i < workerCount; i++) {
+            if (workers[i] != null && workers[i].equals(worker)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    // Методы для добавления сотрудника в отдел
+    public void addWorker(Worker worker) {
+        if (worker != null && workerCount < workers.length && !containsWorker(worker)) {
+            workers[workerCount] = worker;
+            workerCount++;
+        }
     }
 
     @Override
