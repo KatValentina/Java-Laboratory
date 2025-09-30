@@ -27,7 +27,10 @@ public class Name {
     @Override
     public String toString() {
         String fullname=null;
-        if ((NaMe!=null&&Surname==null&&MiddleN==null) || (NaMe!=null&&Surname!=null&&MiddleN==null) || (NaMe==null&&Surname==null&&MiddleN==null)) {
+        if ((!NaMe.isEmpty() && Surname.isEmpty() && MiddleN.isEmpty()) ||
+                (!NaMe.isEmpty() && !Surname.isEmpty() && MiddleN.isEmpty()) ||
+                (!NaMe.isEmpty() && !Surname.isEmpty() && !MiddleN.isEmpty())) {
+
             if (Surname!=null && !Surname.isEmpty()) {
                 fullname = Surname;
             }

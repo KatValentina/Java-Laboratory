@@ -83,10 +83,15 @@ public class Main {
                 System.out.println(person4.toString());
                 System.out.println(person5.toString());
 
-                System.out.println("=== Все сотрудники IT отдела (через Петрова) ===");
-                Worker[] allItWorkers = person1.getAllColleagues();
-                for (int i = 0; i < allItWorkers.length; i++) {
-                    System.out.println((i + 1) + ". " + allItWorkers[i].getName());
+                System.out.println("Все сотрудники IT отдела: ");
+                Worker[] allIt = person1.getAll();
+                for (int i = 0; i < allIt.length; i++) {
+                    System.out.println((i + 1) + ". " + allIt[i].getName());
+                }
+                System.out.println("Все сотрудники HR отдела: ");
+                Worker[] allHR = person5.getAll();
+                for (int i = 0; i < allHR.length; i++) {
+                    System.out.println((i + 1) + ". " + allHR[i].getName());
                 }
                 break;
             }
@@ -108,6 +113,31 @@ public class Main {
                 break;
             }
             case 5: {
+                System.out.println("Вам предстоит пострелять из пистолета!");
+                Pistol pistol = new Pistol();
+                String v;
+                System.out.println("Хотите задать количество патронов или возьмёте полностью заряженный пистолет?" +
+                        "\nЕсли хотите задать введите 'да' если полностью заряжённый, то 'нет'");
+                v = scanner.next();
+                switch (v) {
+                    case ("да"): {
+                        pistol.setCount();
+                        String information;
+                        information = pistol.toString();
+                        System.out.println(information);
+                        pistol.Shot();
+                        break;
+                    }
+                    case ("нет"): {
+                        String information;
+                        information = pistol.toString();
+                        System.out.println(information);
+                        pistol.Shot();
+                        break;
+                    }
+                    default: System.out.println("Нет такого выбора ответа!");
+                    break;
+                }
                 break;
             }
             default: System.out.println("Нет такого задания");

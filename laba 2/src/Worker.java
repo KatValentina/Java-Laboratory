@@ -26,7 +26,7 @@ public class Worker {
 
     }
 
-    public Worker[] getAllColleagues() {
+    public Worker[] getAll() {
         if (Unit != null) {
             return Unit.getWorkers();
         }
