@@ -48,6 +48,7 @@ public class Main {
                     default: System.out.println("Нет такого подзадания");
                     break;
                 }
+                break;
             }
             case 2: {
                 Department depIT = new Department("IT");
