@@ -35,7 +35,11 @@
 Класс <b>Metods :</b> <br>
 <b>boolean CorrectName(String s)</b> - метод проверяет имя на длину(не меньше 2),написано ли оно кириллицей(от заглавных букв до маленьких) и что в имени может быть дефис (но не в начале и конце). <br>
 <b> Пример работы программы: </b><br>
-![Вывод созданных пользователем людей](https://github.com/KatValentina/Java-Laboratory/blob/main/screenshot2/Work%20programm1.2.png)
+![Вывод созданных пользователем людей](https://github.com/KatValentina/Java-Laboratory/blob/main/screenshot2/Work%20programm1.2.png)<br>
+<b>Обработка ошибочных вводов:</b><br>
+![Ошибки в вводе имён](https://github.com/KatValentina/Java-Laboratory/blob/main/screenshot2/Error1.2.1.png)
+![Ошибки в вводе роста](https://github.com/KatValentina/Java-Laboratory/blob/main/screenshot2/Error1.2.2.png)<br>
+
 
 <A NAME="chap1.3"></A>
 <b>Задание 1.3</b>
