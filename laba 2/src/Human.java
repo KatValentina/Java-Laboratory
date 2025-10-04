@@ -58,10 +58,4 @@ public class Human {
         this.height = height;
     }
 
-    //конструктор копирования
-    public Human(Human human) {
-        this.Name = human.Name;
-        this.height = human.height;
-    }
-
 }
