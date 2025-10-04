@@ -51,14 +51,6 @@ public class Department {
         }
     }
 
-    public Department(String Title, Worker Chief) {
-        this.Title = Title;
-        this.Chief = Chief;
-        this.workers = new Worker[50]; // 3 задание, максимум сотрудников
-        this.workerCount = 0;
-
-    }
-
     // Проверка наличия сотрудника в отделе
     private boolean containsWorker(Worker worker) {
         for (int i = 0; i < workerCount; i++) {

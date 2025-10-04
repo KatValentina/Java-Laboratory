@@ -17,11 +17,54 @@ public class Name {
         return MiddleN;
     }
 
+    public void setSurname(String Surname) {
+        Surname = inputName(Surname);
+        this.Surname = Surname;
+    }
+
+    public void setNaMe(String NaMe) {
+        NaMe = inputName(NaMe);
+        this.NaMe = NaMe;
+    }
+
+    public void setMiddleN(String MiddleN) {
+        MiddleN = inputName(MiddleN);
+        this.MiddleN = MiddleN;
+    }
+
     //стандартное имя (по умолчанию)
     public Name() {
         this.Surname = null;
         this.NaMe = null;
         this.MiddleN = null;
+    }
+
+    public void createName() {
+        Scanner scanner = new Scanner(System.in);
+        String sname,name,miname;
+        System.out.print("Введите фамилию человека: ");
+        sname = scanner.nextLine();
+        setSurname(sname);
+        System.out.print("Введите имя человека: ");
+        name = scanner.nextLine();
+        setNaMe(name);
+        System.out.print("Введите отчество человека: ");
+        miname = scanner.nextLine();
+        setMiddleN(miname);
+    }
+
+    public String inputName(String name) {
+        Scanner scanner = new Scanner(System.in);
+        Metods t = new Metods();
+        boolean c;
+        c = t.correctName(name);
+
+        while (!c) {
+            System.out.print("Неверно введённые данные. Введите другие: ");
+            name = scanner.nextLine();
+            c = t.correctName(name);
+        }
+        return name;
     }
 
     @Override
@@ -88,49 +131,4 @@ public class Name {
             return fullname;
         }
     }
-
-    public void createName() {
-        Scanner scanner = new Scanner(System.in);
-        String sname,name,miname;
-        System.out.print("Введите фамилию человека: ");
-        sname = scanner.nextLine();
-        setSurname(sname);
-        System.out.print("Введите имя человека: ");
-        name = scanner.nextLine();
-        setNaMe(name);
-        System.out.print("Введите отчество человека: ");
-        miname = scanner.nextLine();
-        setMiddleN(miname);
-    }
-
-    public String inputName(String name) {
-        Scanner scanner = new Scanner(System.in);
-        Metods t = new Metods();
-        boolean c;
-        c = t.correctName(name);
-
-        while (!c) {
-            System.out.print("Неверно введённые данные. Введите другие: ");
-            name = scanner.nextLine();
-            c = t.correctName(name);
-        }
-        return name;
-    }
-
-    public void setSurname(String Surname) {
-        Surname = inputName(Surname);
-        this.Surname = Surname;
-    }
-
-    public void setNaMe(String NaMe) {
-        NaMe = inputName(NaMe);
-        this.NaMe = NaMe;
-    }
-
-    public void setMiddleN(String MiddleN) {
-        MiddleN = inputName(MiddleN);
-        this.MiddleN = MiddleN;
-    }
-
-
 }

@@ -33,15 +33,16 @@ public class Worker {
         return new Worker[0]; // Возвращаем пустой массив, если нет отдела
     }
 
-    public Worker(String Name) {
-        this.Name = Name;
-        this.Unit = null;
-    }
-
     public Worker(String Name, Department Unit) {
         this.Name = Name;
         setUnit(Unit);
     }
+
+    public Worker(Department Unit) {
+        this.Name = null;
+        setUnit(Unit);
+    }
+
 
     @Override
     public String toString(){
@@ -58,6 +59,5 @@ public class Worker {
         } else {
             return "Важные параметры(такие как название отдела или имя работника) не были созданы!";
         }
-
     }
 }

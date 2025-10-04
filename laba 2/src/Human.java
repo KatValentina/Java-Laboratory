@@ -12,6 +12,15 @@ public class Human {
         return Name;
     }
 
+    public void setHeight(int height) {
+        while (height<60 || height>270) {
+            System.out.print("Такого роста человек не существует. Введите другое: ");
+            Scanner scanner = new Scanner(System.in);
+            height = scanner.nextInt();
+        }
+        this.height = height;
+    }
+
     //стандартный человек (по умолчанию)
     public Human() {
         this.Name = "Иван";
@@ -47,15 +56,6 @@ public class Human {
             c = t.CorrectName(Name);
         }
         this.Name = Name;
-    }
-
-    public void setHeight(int height) {
-        while (height<60 || height>270) {
-            System.out.print("Такого роста человек не существует. Введите другое: ");
-            Scanner scanner = new Scanner(System.in);
-            height = scanner.nextInt();
-        }
-        this.height = height;
     }
 
 }
