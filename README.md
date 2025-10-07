@@ -103,8 +103,8 @@
 ![Создание работников и назначение начальника](https://github.com/KatValentina/Java-Laboratory/blob/main/screenshot2/WorkProgramm2.1.png)<br>
 ![Вывод информации о работниках](https://github.com/KatValentina/Java-Laboratory/blob/main/screenshot2/WorkProgramm2.2.png)<br>
 <b>Вывод при других параметров:</b><br>
-![Некоторые поля пустые](https://github.com/KatValentina/Java-Laboratory/blob/main/screenshot2/Еггог2.1.png)<br>
-![Вывод данных о сотрудниках, где не заполнены некоторые поля](https://github.com/KatValentina/Java-Laboratory/blob/main/screenshot2/Еггог2.2.png)<br>
+![Некоторые поля пустые](https://github.com/KatValentina/Java-Laboratory/blob/main/screenshot2/Error2.1.png)<br>
+![Вывод данных о сотрудниках, где не заполнены некоторые поля](https://github.com/KatValentina/Java-Laboratory/blob/main/screenshot2/Error2.2.png)<br>
 
 
 <A NAME="chap3"></A>
