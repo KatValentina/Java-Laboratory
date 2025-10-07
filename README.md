@@ -97,11 +97,21 @@
 Геттеры <b>getTitle()</b> и <b>getChief()</b> - возвращают соответственно название отдела и информацию о начальнике.<br>
 Сеттеры <b>setChief(Worker chief)</b> и <b>setTitle(String Title)</b> нужны для ввода начальника отдела и названия отдела.<br>
 Конструктор <b>Department(String Title)</b> - создаёт департамент с заданным названием.<br>
-
+Метод <b>boolean isChief(Worker worker)</b> - возвращает <b>true</b> если переданный сотрудник является начальником отдела. Проверка осуществляется через <b>if</b>, где проверяется, что поле <b>Chief</b> не пустое и оно равно переданному сотруднику.<br>
+Переопределение метода <b>toString()</b> - нужен для вывода названия отдела.<br>
+<b> Пример работы программы: </b><br>
+![Создание работников и назначение начальника](https://github.com/KatValentina/Java-Laboratory/blob/main/screenshot2/WorkProgramm2.1.png)<br>
+![Вывод информации о работниках](https://github.com/KatValentina/Java-Laboratory/blob/main/screenshot2/WorkProgramm2.2.png)<br>
+<b>Вывод при других параметров:</b><br>
+![Некоторые поля пустые](https://github.com/KatValentina/Java-Laboratory/blob/main/screenshot2/Еггог2.1.png)<br>
+![Вывод данных о сотрудниках, где не заполнены некоторые поля](https://github.com/KatValentina/Java-Laboratory/blob/main/screenshot2/Еггог2.2.png)<br>
 
 
 <A NAME="chap3"></A>
 <H1>Задание 3</H1>
+Сотрудники и отделы.<br>
+Измените решение, полученное в задаче 2.4 таким образом, чтобы имея ссылку на сотрудника, можно было бы узнать список всех сотрудников этого отдела.<br>
+Как и сказано по заданию, воспользуемся решением <A HREF="#chap2">задачи 2.4</A><br>
 
 
 

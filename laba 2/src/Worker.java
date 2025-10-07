@@ -46,7 +46,7 @@ public class Worker {
 
     @Override
     public String toString(){
-        if (Name!=null && Unit.getTitle()!=null){
+        if (Name!=null && Unit!=null && Unit.getTitle()!=null){
             if (Unit.isChief(this)) {
                 return Name+" начальник отдела "+Unit.getTitle();
             } else {
