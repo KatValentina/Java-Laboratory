@@ -100,7 +100,7 @@
 Метод <b>boolean isChief(Worker worker)</b> - возвращает <b>true</b> если переданный сотрудник является начальником отдела. Проверка осуществляется через <b>if</b>, где проверяется, что поле <b>Chief</b> не пустое и оно равно переданному сотруднику.<br>
 Переопределение метода <b>toString()</b> - нужен для вывода названия отдела.<br>
 <b> Пример работы программы: </b> <br>
-[Создание сотрудников](screenshot2/Work2.1.png)<br>
+[Создание сотрудников](https://github.com/KatValentina/Java-Laboratory/blob/main/screenshot2/Work2.1.png)<br>
 ![Вывод информации о работниках](https://github.com/KatValentina/Java-Laboratory/raw/main/screenshot2/WorkProgramm2.2.png)<br>
 <b>Вывод при других параметров:</b><br>
 ![Некоторые поля пустые](https://github.com/KatValentina/Java-Laboratory/raw/main/screenshot2/Error2.1.png)<br>
