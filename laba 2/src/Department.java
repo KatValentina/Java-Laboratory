@@ -18,7 +18,7 @@ public class Department {
         return workerCount;
     }
 
-    // конструктор для 3 задания
+    // Геттер для 3 задания
     public Worker[] getWorkers() {
         Worker[] result = new Worker[workerCount];
         for (int i = 0; i < workerCount; i++) {
