@@ -39,7 +39,7 @@ public class Department {
     public Department(String Title) {
         this.Title = Title;
         this.Chief = null;
-        this.workers = new Worker[50];// 3 задание, максимум сотрудников
+        this.workers = new Worker[50];// 3 задание
         this.workerCount = 0;
     }
 
@@ -61,7 +61,7 @@ public class Department {
         return false;
     }
 
-    // Методы для добавления сотрудника в отдел
+    // добавление сотрудника в отдел
     public void addWorker(Worker worker) {
         if (worker != null && workerCount < workers.length && !containsWorker(worker)) {
             workers[workerCount] = worker;

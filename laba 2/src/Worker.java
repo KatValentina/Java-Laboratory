@@ -30,7 +30,7 @@ public class Worker {
         if (Unit != null) {
             return Unit.getWorkers();
         }
-        return new Worker[0]; // Возвращаем пустой массив, если нет отдела
+        return new Worker[0];
     }
 
     public Worker(String Name, Department Unit) {
