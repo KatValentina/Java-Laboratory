@@ -71,64 +71,64 @@ public class Name {
     public String toString() {
         String fullname=null;
         //задание 4
-//        if ((!NaMe.isEmpty() && Surname.isEmpty() && MiddleN.isEmpty()) ||
-//                (!NaMe.isEmpty() && !Surname.isEmpty() && MiddleN.isEmpty()) ||
-//                (!NaMe.isEmpty() && !Surname.isEmpty() && !MiddleN.isEmpty())) {
-//
-//            if (Surname!=null && !Surname.isEmpty()) {
-//                fullname = Surname;
-//            }
-//
-//            if (NaMe!=null && !NaMe.isEmpty()) {
-//                if (fullname!=null) {
-//                    fullname = fullname+" "+ NaMe;
-//                } else {
-//                    fullname = NaMe;
-//                }
-//            }
-//
-//            if (MiddleN!=null && !MiddleN.isEmpty()) {
-//                if (fullname!=null) {
-//                    fullname = fullname+" "+ MiddleN;
-//                } else {
-//                    fullname = MiddleN;
-//                }
-//            }
-//
-//            if (fullname == null) {
-//                return "Вы не создали Имя";
-//            } else {
-//                return fullname;
-//            }
-//        } else {
-//            return "Нельзя создать имя такого формата!";
-//        }
+        if ((!NaMe.isEmpty() && Surname.isEmpty() && MiddleN.isEmpty()) ||
+                (!NaMe.isEmpty() && !Surname.isEmpty() && MiddleN.isEmpty()) ||
+                (!NaMe.isEmpty() && !Surname.isEmpty() && !MiddleN.isEmpty())) {
+
+            if (Surname!=null && !Surname.isEmpty()) {
+                fullname = Surname;
+            }
+
+            if (NaMe!=null && !NaMe.isEmpty()) {
+                if (fullname!=null) {
+                    fullname = fullname+" "+ NaMe;
+                } else {
+                    fullname = NaMe;
+                }
+            }
+
+            if (MiddleN!=null && !MiddleN.isEmpty()) {
+                if (fullname!=null) {
+                    fullname = fullname+" "+ MiddleN;
+                } else {
+                    fullname = MiddleN;
+                }
+            }
+
+            if (fullname == null) {
+                return "Вы не создали Имя";
+            } else {
+                return fullname;
+            }
+        } else {
+            return "Нельзя создать имя такого формата!";
+        }
 
         //задание 1.3
-        if (Surname!=null && !Surname.isEmpty()) {
-            fullname = Surname;
-        }
-
-        if (NaMe!=null && !NaMe.isEmpty()) {
-            if (fullname!=null) {
-                fullname = fullname+" "+ NaMe;
-            } else {
-                fullname = NaMe;
-            }
-        }
-
-        if (MiddleN!=null && !MiddleN.isEmpty()) {
-            if (fullname!=null) {
-                fullname = fullname+" "+ MiddleN;
-            } else {
-                fullname = MiddleN;
-            }
-        }
-
-        if (fullname == null) {
-            return "Вы не создали Имя";
-        } else {
-            return fullname;
-        }
+//        if (Surname!=null && !Surname.isEmpty()) {
+//            fullname = Surname;
+//        }
+//
+//        if (NaMe!=null && !NaMe.isEmpty()) {
+//            if (fullname!=null) {
+//                fullname = fullname+" "+ NaMe;
+//            } else {
+//                fullname = NaMe;
+//            }
+//        }
+//
+//        if (MiddleN!=null && !MiddleN.isEmpty()) {
+//            if (fullname!=null) {
+//                fullname = fullname+" "+ MiddleN;
+//            } else {
+//                fullname = MiddleN;
+//            }
+//        }
+//
+//        if (fullname == null) {
+//            return "Вы не создали Имя";
+//        } else {
+//            return fullname;
+//        }
     }
 }

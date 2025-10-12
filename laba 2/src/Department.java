@@ -27,7 +27,6 @@ public class Department {
         return result;
     }
 
-
     public void setChief(Worker chief) {
         Chief = chief;
     }

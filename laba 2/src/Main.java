@@ -68,7 +68,7 @@ public class Main {
             case 3: {
                 Department depIT = new Department("IT");
                 Department depHR = new Department("HR");
-                System.out.println("Сейчас будет создано 3 человека");
+                System.out.println("Сейчас будет создано 5 человек");
                 Worker person1 = new Worker("Петров",depIT);
                 Worker person2 = new Worker("Козлов",depIT);
                 Worker person3 = new Worker("Сидоров",depIT);
@@ -84,12 +84,12 @@ public class Main {
                 System.out.println(person4.toString());
                 System.out.println(person5.toString());
 
-                System.out.println("Все сотрудники IT отдела: ");
+                System.out.println("Все сотрудники IT отдела (по Петрову): ");
                 Worker[] allIt = person1.getAll();
                 for (int i = 0; i < allIt.length; i++) {
                     System.out.println((i + 1) + ". " + allIt[i].getName());
                 }
-                System.out.println("Все сотрудники HR отдела: ");
+                System.out.println("Все сотрудники HR отдела (по Волеговой): ");
                 Worker[] allHR = person5.getAll();
                 for (int i = 0; i < allHR.length; i++) {
                     System.out.println((i + 1) + ". " + allHR[i].getName());

@@ -16,6 +16,13 @@ public class Worker {
         this.Name = Name;
     }
 
+    public Worker[] getAll() {
+        if (Unit != null) {
+            return Unit.getWorkers();
+        }
+        return new Worker[0];
+    }
+
     public void setUnit(Department Unit) {
         this.Unit = Unit;
 
@@ -26,23 +33,15 @@ public class Worker {
 
     }
 
-    public Worker[] getAll() {
-        if (Unit != null) {
-            return Unit.getWorkers();
-        }
-        return new Worker[0];
+    public Worker(Department Unit) {
+        this.Name = null;
+        setUnit(Unit);
     }
 
     public Worker(String Name, Department Unit) {
         this.Name = Name;
         setUnit(Unit);
     }
-
-    public Worker(Department Unit) {
-        this.Name = null;
-        setUnit(Unit);
-    }
-
 
     @Override
     public String toString(){
