@@ -6,7 +6,7 @@ public class Pistol {
 
     public void setCount() {
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Введите количество потронов: ");
+        System.out.print("Введите количество патронов: ");
         Count = scanner.nextInt();
         while (Count<0 || Count>5) {
             System.out.println("Не может быть такого количества патронов. Введите другое количество: ");

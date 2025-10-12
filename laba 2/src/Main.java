@@ -118,21 +118,17 @@ public class Main {
                 Pistol pistol = new Pistol();
                 String v;
                 System.out.println("Хотите задать количество патронов или возьмёте полностью заряженный пистолет?" +
-                        "\nЕсли хотите задать введите 'да' если полностью заряжённый, то 'нет'");
+                        "\nЕсли хотите задать количество патронов введите 'да', если хотите полностью заряжённый, то 'нет'");
                 v = scanner.next();
                 switch (v) {
                     case ("да"): {
                         pistol.setCount();
-                        String information;
-                        information = pistol.toString();
-                        System.out.println(information);
+                        System.out.println(pistol.toString());
                         pistol.Shot();
                         break;
                     }
                     case ("нет"): {
-                        String information;
-                        information = pistol.toString();
-                        System.out.println(information);
+                        System.out.println(pistol.toString());
                         pistol.Shot();
                         break;
                     }
