@@ -170,4 +170,5 @@
 Метод <b>Shot()</b> - стреляет из пистолета. В цикле <b>for</b> проходимся по барабану с патронами. Если патроны ещё не закончились, то выводим "Бах!", иначе выводим "Клац!".<br>
 Переопределение метода <b>toString()</b> - нужен для вывода количества патронов в пистолете.<br>
 Работа программы: https://github.com/KatValentina/Java-Laboratory/blob/main/screenshot2/Program5.png<br>
+
 <a href="#top" id="back-to-top" class="back-to-top" title="Back to top">▲</a>
