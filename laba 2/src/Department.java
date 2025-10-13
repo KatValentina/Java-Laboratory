@@ -1,17 +1,17 @@
 import java.util.Scanner;
 
 public class Department {
-    private String Title;
-    private Worker Chief;
+    private String title;
+    private Worker chief;
     private Worker[] workers;//3 задание
     private int workerCount;
 
     public String getTitle() {
-        return Title;
+        return title;
     }
 
     public Worker getChief() {
-        return Chief;
+        return chief;
     }
 
     public int getWorkerCount() { //3 задание
@@ -28,22 +28,22 @@ public class Department {
     }
 
     public void setChief(Worker chief) {
-        Chief = chief;
+        chief = chief;
     }
 
-    public void setTitle(String Title) {
-        this.Title = Title;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public Department(String Title) {
-        this.Title = Title;
-        this.Chief = null;
+        this.title = Title;
+        this.chief = null;
         this.workers = new Worker[50];// 3 задание
         this.workerCount = 0;
     }
 
     public boolean isChief(Worker worker) {
-        if (Chief!=null && Chief.equals(worker)) {
+        if (chief!=null && chief.equals(worker)) {
             return true;
         } else {
             return false;
@@ -70,6 +70,6 @@ public class Department {
 
     @Override
     public String toString() {
-        return Title;
+        return title;
     }
 }

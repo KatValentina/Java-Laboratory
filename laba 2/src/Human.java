@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class Human {
-    private String Name;
+    private String name;
     private int height;
 
     public int getHeight() {
@@ -9,7 +9,7 @@ public class Human {
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setHeight(int height) {
@@ -21,9 +21,23 @@ public class Human {
         this.height = height;
     }
 
+    public void setName(String name) {
+        Scanner scanner = new Scanner(System.in);
+        Metods t = new Metods();
+        boolean c;
+        c = t.CorrectName(name);
+
+        while (!c) {
+            System.out.print("Неверно введённое имя. Введите другое: ");
+            name = scanner.nextLine();
+            c = t.CorrectName(name);
+        }
+        this.name = name;
+    }
+
     //стандартный человек (по умолчанию)
     public Human() {
-        this.Name = "Иван";
+        this.name = "Иван";
         this.height = 165;
     }
 
@@ -41,21 +55,6 @@ public class Human {
 
     @Override
     public String toString() {
-        return Name+", рост: "+height;
+        return name+", рост: "+height;
     }
-
-    public void setName(String Name) {
-        Scanner scanner = new Scanner(System.in);
-        Metods t = new Metods();
-        boolean c;
-        c = t.CorrectName(Name);
-
-        while (!c) {
-            System.out.print("Неверно введённое имя. Введите другое: ");
-            Name = scanner.nextLine();
-            c = t.CorrectName(Name);
-        }
-        this.Name = Name;
-    }
-
 }

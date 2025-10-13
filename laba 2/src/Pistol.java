@@ -1,26 +1,25 @@
 import java.util.Scanner;
 
-
 public class Pistol {
-    private int Count;
+    private int count;
 
     public void setCount() {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Введите количество патронов: ");
-        Count = scanner.nextInt();
-        while (Count<0 || Count>5) {
+        count = scanner.nextInt();
+        while (count <0 || count >5) {
             System.out.println("Не может быть такого количества патронов. Введите другое количество: ");
-            Count = scanner.nextInt();
+            count = scanner.nextInt();
         }
-        this.Count = Count;
+        this.count = count;
     }
 
     public int getCount() {
-        return Count;
+        return count;
     }
 
     public Pistol() {
-        this.Count = 5;
+        this.count = 5;
     }
 
     public void Shot() {

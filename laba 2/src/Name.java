@@ -1,42 +1,42 @@
 import java.util.Scanner;
 
 public class Name {
-    private String Surname;
-    private String NaMe;
-    private String MiddleN;
+    private String surname;
+    private String naMe;
+    private String middleN;
 
     public String getSurname() {
-        return Surname;
+        return surname;
     }
 
     public String getNaMe() {
-        return NaMe;
+        return naMe;
     }
 
     public String getMiddleN() {
-        return MiddleN;
+        return middleN;
     }
 
-    public void setSurname(String Surname) {
-        Surname = inputName(Surname);
-        this.Surname = Surname;
+    public void setSurname(String surname) {
+        surname = inputName(surname);
+        this.surname = surname;
     }
 
-    public void setNaMe(String NaMe) {
-        NaMe = inputName(NaMe);
-        this.NaMe = NaMe;
+    public void setNaMe(String naMe) {
+        naMe = inputName(naMe);
+        this.naMe = naMe;
     }
 
-    public void setMiddleN(String MiddleN) {
-        MiddleN = inputName(MiddleN);
-        this.MiddleN = MiddleN;
+    public void setMiddleN(String middleN) {
+        middleN = inputName(middleN);
+        this.middleN = middleN;
     }
 
     //стандартное имя (по умолчанию)
     public Name() {
-        this.Surname = null;
-        this.NaMe = null;
-        this.MiddleN = null;
+        this.surname = null;
+        this.naMe = null;
+        this.middleN = null;
     }
 
     public void createName() {
@@ -71,27 +71,27 @@ public class Name {
     public String toString() {
         String fullname=null;
         //задание 4
-        if ((!NaMe.isEmpty() && Surname.isEmpty() && MiddleN.isEmpty()) ||
-                (!NaMe.isEmpty() && !Surname.isEmpty() && MiddleN.isEmpty()) ||
-                (!NaMe.isEmpty() && !Surname.isEmpty() && !MiddleN.isEmpty())) {
+        if ((!naMe.isEmpty() && surname.isEmpty() && middleN.isEmpty()) ||
+                (!naMe.isEmpty() && !surname.isEmpty() && middleN.isEmpty()) ||
+                (!naMe.isEmpty() && !surname.isEmpty() && !middleN.isEmpty())) {
 
-            if (Surname!=null && !Surname.isEmpty()) {
-                fullname = Surname;
+            if (surname!=null && !surname.isEmpty()) {
+                fullname = surname;
             }
 
-            if (NaMe!=null && !NaMe.isEmpty()) {
+            if (naMe!=null && !naMe.isEmpty()) {
                 if (fullname!=null) {
-                    fullname = fullname+" "+ NaMe;
+                    fullname = fullname+" "+ naMe;
                 } else {
-                    fullname = NaMe;
+                    fullname = naMe;
                 }
             }
 
-            if (MiddleN!=null && !MiddleN.isEmpty()) {
+            if (middleN!=null && !middleN.isEmpty()) {
                 if (fullname!=null) {
-                    fullname = fullname+" "+ MiddleN;
+                    fullname = fullname+" "+ middleN;
                 } else {
-                    fullname = MiddleN;
+                    fullname = middleN;
                 }
             }
 
@@ -105,23 +105,23 @@ public class Name {
         }
 
         //задание 1.3
-//        if (Surname!=null && !Surname.isEmpty()) {
-//            fullname = Surname;
+//        if (surname!=null && !surname.isEmpty()) {
+//            fullname = surname;
 //        }
 //
-//        if (NaMe!=null && !NaMe.isEmpty()) {
+//        if (naMe!=null && !naMe.isEmpty()) {
 //            if (fullname!=null) {
-//                fullname = fullname+" "+ NaMe;
+//                fullname = fullname+" "+ naMe;
 //            } else {
-//                fullname = NaMe;
+//                fullname = naMe;
 //            }
 //        }
 //
-//        if (MiddleN!=null && !MiddleN.isEmpty()) {
+//        if (middleN!=null && !middleN.isEmpty()) {
 //            if (fullname!=null) {
-//                fullname = fullname+" "+ MiddleN;
+//                fullname = fullname+" "+ middleN;
 //            } else {
-//                fullname = MiddleN;
+//                fullname = middleN;
 //            }
 //        }
 //

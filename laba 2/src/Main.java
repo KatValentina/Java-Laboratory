@@ -20,7 +20,7 @@ public class Main {
                             n= scanner.nextInt();
                         }
                         Metods t = new Metods();
-                        Human [] arr = t.add(n);
+                        Human [] arr = t.Add(n);
 
                         System.out.println("Созданные люди: ");
                         for (Human j : arr) {
@@ -37,7 +37,7 @@ public class Main {
                             n= scanner.nextInt();
                         }
                         Metods t = new Metods();
-                        Name [] arr = t.addArr(n);
+                        Name [] arr = t.AddArr(n);
 
                         System.out.println("Созданные люди: ");
                         for (Name j : arr) {
@@ -105,7 +105,7 @@ public class Main {
                     n= scanner.nextInt();
                 }
                 Metods t = new Metods();
-                Name [] arr = t.addArr(n);
+                Name [] arr = t.AddArr(n);
 
                 System.out.println("Созданные люди: ");
                 for (Name j : arr) {

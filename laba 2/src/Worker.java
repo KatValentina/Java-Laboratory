@@ -1,58 +1,58 @@
 import java.util.Scanner;
 
 public class Worker {
-    String Name;
-    private Department Unit;
+    String name;
+    private Department unit;
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public Department getUnit() {
-        return Unit;
+        return unit;
     }
 
-    public void setName(String Name) {
-        this.Name = Name;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Worker[] getAll() {
-        if (Unit != null) {
-            return Unit.getWorkers();
+        if (unit != null) {
+            return unit.getWorkers();
         }
         return new Worker[0];
     }
 
-    public void setUnit(Department Unit) {
-        this.Unit = Unit;
+    public void setUnit(Department unit) {
+        this.unit = unit;
 
         // Добавляем в новый отдел
-        if (this.Unit != null) {
-            this.Unit.addWorker(this);
+        if (this.unit != null) {
+            this.unit.addWorker(this);
         }
 
     }
 
     public Worker(Department Unit) {
-        this.Name = null;
+        this.name = null;
         setUnit(Unit);
     }
 
-    public Worker(String Name, Department Unit) {
-        this.Name = Name;
-        setUnit(Unit);
+    public Worker(String name, Department unit) {
+        this.name = name;
+        setUnit(unit);
     }
 
     @Override
     public String toString(){
-        if (Name!=null && Unit!=null && Unit.getTitle()!=null){
-            if (Unit.isChief(this)) {
-                return Name+" начальник отдела "+Unit.getTitle();
+        if (name!=null && unit!=null && unit.getTitle()!=null){
+            if (unit.isChief(this)) {
+                return name+" начальник отдела "+unit.getTitle();
             } else {
-                if (Unit.getChief()==null || Unit.getChief().getName()==null) {
-                    return Name+" работает в отделе "+Unit.getTitle()+", у которого нет начальника";
+                if (unit.getChief()==null || unit.getChief().getName()==null) {
+                    return name+" работает в отделе "+unit.getTitle()+", у которого нет начальника";
                 } else {
-                    return Name+" работает в отделе "+Unit.getTitle()+", начальник которого "+Unit.getChief().getName();
+                    return name+" работает в отделе "+unit.getTitle()+", начальник которого "+unit.getChief().getName();
                 }
             }
         } else {
