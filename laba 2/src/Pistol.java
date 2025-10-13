@@ -24,10 +24,11 @@ public class Pistol {
 
     public void Shot() {
         int count = getCount();
-        for (int i = 5;i>=0;i--){
+        for (int i = 5;i>0;i--){
             if (count>0){
                 System.out.println("Бах!");
                 count--;
+                this.count = getCount() -1;
             } else {
                 System.out.println("Клац!");
             }
