@@ -21,22 +21,22 @@ public class Main {
 
                             System.out.println("Сколько патронов зарядить в пистолет?");
                             int сartridges = Metods.isInt();
-                            remains = gun.reoload(сartridges);
+                            remains = gun.reload(сartridges);
                             System.out.println("Лишние патроны, которые не вошли в патронник: "+remains);
                             System.out.println(gun.toString());
 
                             System.out.println("Сколько раз будете стрелять?");
                             int n = Metods.isInt();
-                            gun.Shot(n);
+                            gun.shot(n);
 
                             System.out.println("Сколько патронов зарядить в пистолет?");
                             сartridges = Metods.isInt();
-                            remains = gun.reoload(сartridges);
+                            remains = gun.reload(сartridges);
                             System.out.println("Лишние патроны, которые не вошли в патронник: "+remains);
 
                             System.out.println("Сколько раз будете стрелять?");
                             n = Metods.isInt();
-                            gun.Shot(n);
+                            gun.shot(n);
 
                             remains = gun.discharged();
                             System.out.println("Разрядим пистолет. В пистолете было: "+remains+" патронов.");
@@ -44,7 +44,7 @@ public class Main {
 
                             System.out.println("Сколько раз будете стрелять?");
                             n = Metods.isInt();
-                            gun.Shot(n);
+                            gun.shot(n);
                         } catch (IllegalArgumentException e) {
                             System.out.println(e.getMessage());
                         }
