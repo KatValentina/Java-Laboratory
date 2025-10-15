@@ -14,40 +14,40 @@ public class Main {
                 switch (num) {
                     case 5: {
                         System.out.println("Вам предстоит ввести максимальную вместимость патронника.");
-                        int maxCartridges = Metods.isPossitive();
-                        while (maxCartridges==0) {
-                            System.out.println("Патронник не может вмещать 0 патронов. Введите заново!");
-                            maxCartridges = Metods.isPossitive();
+                        try {
+                            int maxCartridges = Metods.isInt();
+                            int remains;
+                            Pistol gun = new Pistol(maxCartridges);
+
+                            System.out.println("Сколько патронов зарядить в пистолет?");
+                            int сartridges = Metods.isInt();
+                            remains = gun.reoload(сartridges);
+                            System.out.println("Лишние патроны, которые не вошли в патронник: "+remains);
+                            System.out.println(gun.toString());
+
+                            System.out.println("Сколько раз будете стрелять?");
+                            int n = Metods.isInt();
+                            gun.Shot(n);
+
+                            System.out.println("Сколько патронов зарядить в пистолет?");
+                            сartridges = Metods.isInt();
+                            remains = gun.reoload(сartridges);
+                            System.out.println("Лишние патроны, которые не вошли в патронник: "+remains);
+
+                            System.out.println("Сколько раз будете стрелять?");
+                            n = Metods.isInt();
+                            gun.Shot(n);
+
+                            remains = gun.discharged();
+                            System.out.println("Разрядим пистолет. В пистолете было: "+remains+" патронов.");
+                            System.out.println(gun.toString());
+
+                            System.out.println("Сколько раз будете стрелять?");
+                            n = Metods.isInt();
+                            gun.Shot(n);
+                        } catch (IllegalArgumentException e) {
+                            System.out.println(e.getMessage());
                         }
-                        int remains;
-                        Pistol gun = new Pistol(maxCartridges);
-
-                        System.out.println("Сколько патронов зарядить в пистолет?");
-                        int сartridges = Metods.isPossitive();
-                        remains = gun.reoload(сartridges);
-                        System.out.println("Лишние патроны, которые не вошли в патронник: "+remains);
-                        System.out.println(gun.toString());
-
-                        System.out.println("Сколько раз будете стрелять?");
-                        int n = Metods.isPossitive();
-                        gun.Shot(n);
-
-                        System.out.println("Сколько патронов зарядить в пистолет?");
-                        сartridges = Metods.isPossitive();
-                        remains = gun.reoload(сartridges);
-                        System.out.println("Лишние патроны, которые не вошли в патронник: "+remains);
-
-                        System.out.println("Сколько раз будете стрелять?");
-                        n = Metods.isPossitive();
-                        gun.Shot(n);
-
-                        gun.discharged();
-                        System.out.println("Разрядим пистолет.");
-                        System.out.println(gun.toString());
-
-                        System.out.println("Сколько раз будете стрелять?");
-                        n = Metods.isPossitive();
-                        gun.Shot(n);
                         break;
                     }
                     case 7: {

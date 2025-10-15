@@ -4,6 +4,10 @@ public class Pistol {
     private int count;
     private final int maxCount;
 
+    public void setCount(int count) {
+        this.count = count;
+    }
+
     public int getCount() {
         return count;
     }
@@ -19,18 +23,31 @@ public class Pistol {
     }
 
     public Pistol(int maxCount) {
-        this.maxCount = maxCount;
-        this.count = 0;
+        if(maxCount<=0) {
+            throw new IllegalArgumentException("Патронник не может вмещать менее 0 патронов. Пистолет не может" +
+                    " быть создан.");
+        } else {
+            this.maxCount = maxCount;
+            this.count = 0;
+        }
     }
 
     public int reoload(int cartridges) {
+        while (cartridges<0) {
+            try {
+                cartridges = Metods.isInt();
+                throw new IllegalArgumentException("Количество патронов не может быть отрицательным.");
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
+        }
         int spacePlace = maxCount - count;
         if (spacePlace>= cartridges) {
-            this.count = getCount() + cartridges;
+            setCount(getCount() + cartridges);
             return 0;
         } else {
             int full = cartridges - spacePlace;
-            this.count = getCount() + spacePlace;
+            setCount(getCount() + spacePlace);
             return full;
         }
     }
@@ -44,11 +61,9 @@ public class Pistol {
     }
 
     public void Shot(int n) {
-        int count = getCount();
         for (int i = n;i>0;i--){
-            if (count>0){
+            if (getCount()>0){
                 System.out.println("Бах!");
-                count--;
                 this.count = getCount() -1;
             } else {
                 System.out.println("Клац!");
