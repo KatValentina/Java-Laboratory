@@ -1,6 +1,4 @@
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 public class PhoneBook {
     private Map <String, String> record;
@@ -62,20 +60,74 @@ public class PhoneBook {
         }
     }
 
+    public boolean checkName() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Введите имя контакта: ");
+        String name = scanner.nextLine();
+        while (!(Metods.correctPeople(name))) {
+            System.out.print("Введено не корректное имя.\n" +
+                    "Пожалуйста,введите заново: ");
+            name = scanner.nextLine();
+        }
+        if (record.get(name)==null) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    public boolean checkNumber() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Введите номер: ");
+        String num = scanner.nextLine();
+
+        while (!(num.matches("\\d+") && num.length()==11)) {
+            System.out.print("Введено не корректное имя.\n" +
+                    "Пожалуйста,введите заново: ");
+            num = scanner.nextLine();
+        }
+        return record.containsValue(num);
+    }
+
+    public int sizeBook(){
+        return record.size();
+    }
+
+    public String[] allPair() {
+        String[] arr = new String[record.size()];
+        int i=0;
+        for (Map.Entry<String, String> entry : record.entrySet()) {
+            arr[i] = entry.getKey() + "-" + entry.getValue();
+            i++;
+        }
+        return arr;
+    }
+
+    public String[] allName() {
+        return record.keySet().toArray(new String[0]);
+    }
+
+    public String[] allNumber() {
+        return record.values().toArray(new String[0]);
+    }
+
     public PhoneBook() {
         this.record = new HashMap<>();
     }
 
     @Override
     public String toString() {
-        String full=null;
-        for (Map.Entry<String, String> entry : record.entrySet()) {
-            System.out.println(entry.getKey() + ": " + entry.getValue());
-            full = full + ", "+entry.getKey() + "-" + entry.getValue();
-        }
-        if (full==null) {
+        if (record.isEmpty()) {
             return "Справочник пуст";
         } else {
+            String full="";
+            for (Map.Entry<String, String> entry : record.entrySet()) {
+                if (full.isEmpty()) {
+                    full = entry.getKey() + "-" + entry.getValue();
+                } else {
+                    full = full + ", "+entry.getKey() + "-" + entry.getValue();
+                }
+            }
             return full;
         }
     }

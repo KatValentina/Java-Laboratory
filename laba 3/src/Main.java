@@ -90,8 +90,12 @@ public class Main {
                 System.out.println("Сейчас будет создан справочник. В нём уже будут записаны контакты.");
                 PhoneBook book = new PhoneBook();
                 try {
-                    String s = book.addRecord("Валентина","89026498993");
-                    System.out.println(s);
+                    String s = book.addRecord("Валентина","89020000001");
+                    String s1 = book.addRecord("Иван","89660000001");
+                    String s2 = book.addRecord("Полина","89660000012");
+                    System.out.println("Уже существующие записи в справочнике: "+book.toString());
+                    String[] arr = book.allNumber();
+                    Metods.printArr(arr);
                 }catch (IllegalStateException e) {
                     System.out.println(e.getMessage());
                 }

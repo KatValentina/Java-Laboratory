@@ -88,4 +88,11 @@ public class Metods {
             return true;
         }
     }
+
+    //проход по строковому массиву
+    public static void printArr(String[]s) {
+        for (int i=0;i<s.length;i++) {
+            System.out.println(s[i]);
+        }
+    }
 }
