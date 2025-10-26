@@ -1,5 +1,3 @@
-import java.util.Scanner;
-
 public class Pistol {
     private int count;
     private final int maxCount;

@@ -3,16 +3,16 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        int number;
+        String number;
         System.out.print("Введите номер задания: ");
-        number = scanner.nextInt();
+        number = scanner.nextLine();
         switch (number){
-            case 1: {
-                int num;
+            case "1": {
+                String num;
                 System.out.print("Номер подзадания: ");
-                num = scanner.nextInt();
+                num = scanner.nextLine();
                 switch (num) {
-                    case 5: {
+                    case "5": {
                         System.out.println("Вам предстоит ввести максимальную вместимость патронника.");
                         try {
                             int maxCartridges = Metods.isInt();
@@ -20,8 +20,8 @@ public class Main {
                             Pistol gun = new Pistol(maxCartridges);
 
                             System.out.println("Сколько патронов зарядить в пистолет?");
-                            int сartridges = Metods.isInt();
-                            remains = gun.reload(сartridges);
+                            int cartridges = Metods.isInt();
+                            remains = gun.reload(cartridges);
                             System.out.println("Лишние патроны, которые не вошли в патронник: "+remains);
                             System.out.println(gun.toString());
 
@@ -30,8 +30,8 @@ public class Main {
                             gun.shot(n);
 
                             System.out.println("Сколько патронов зарядить в пистолет?");
-                            сartridges = Metods.isInt();
-                            remains = gun.reload(сartridges);
+                            cartridges = Metods.isInt();
+                            remains = gun.reload(cartridges);
                             System.out.println("Лишние патроны, которые не вошли в патронник: "+remains);
 
                             System.out.println("Сколько раз будете стрелять?");
@@ -50,7 +50,35 @@ public class Main {
                         }
                         break;
                     }
-                    case 7: {
+                    case "7": {
+                        System.out.print("Создайте имя человека.\nВведите личное имя: ");
+                        try{
+                            String name = Metods.inputName();
+                            System.out.print("Введите фамилию: ");
+                            String sname = Metods.inputName();
+                            System.out.print("Введите отчество: ");
+                            String miname = Metods.inputName();
+                            if ((Metods.isVoid(name))&&(Metods.isVoid(sname))&&
+                                    (Metods.isVoid(miname))) {
+                                throw new IllegalStateException("Имя не может быть создано." +
+                                        "\nКак минимум один параметр должен иметь не null значение и не пустую строку.");
+                            } else {
+                                Name person1;
+                                if(!(name==null||name.isEmpty())&&(sname==null||sname.isEmpty())&&
+                                        (miname==null||miname.isEmpty())) {
+                                    person1 = new Name(name);
+                                }
+                                else if (!(name==null||name.isEmpty())&&!(sname==null||sname.isEmpty())&&
+                                        (miname==null||miname.isEmpty())) {
+                                    person1 = new Name(sname,name);
+                                }else {
+                                    person1 = new Name(sname,name,miname);
+                                }
+                                System.out.print("Имя человека: "+person1.toString());
+                            }
+                        } catch (IllegalStateException e) {
+                            System.out.println(e.getMessage());
+                        }
                         break;
                     }
                     default: System.out.println("Нет такого подзадания");
@@ -58,7 +86,19 @@ public class Main {
                 }
                 break;
             }
-            case 2: {
+            case "2": {
+                System.out.println("Сейчас будет создан справочник. В нём уже будут записаны контакты.");
+                PhoneBook book = new PhoneBook();
+                try {
+                    String s = book.addRecord("Валентина","89026498993");
+                    System.out.println(s);
+                }catch (IllegalStateException e) {
+                    System.out.println(e.getMessage());
+                }
+
+                break;
+            }
+            case "3": {
                 break;
             }
             default: System.out.println("Нет такого задания");
