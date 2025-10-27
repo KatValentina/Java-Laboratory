@@ -10,7 +10,7 @@ public class PhoneBook {
         }
         boolean n = Metods.correctPeople(name);
         boolean onlyDigits = number.matches("\\d+");
-        if (!n && !onlyDigits && (number.length() != 11)) {
+        if (!n || !onlyDigits || (number.length() != 11)) {
             throw new IllegalStateException("Нельзя добавить данный контакт.\nОдин или оба параметра были заданы не верно");
         } else {
             if (record.get(name)==null) {
@@ -46,7 +46,7 @@ public class PhoneBook {
     //Возвращение номера
     public String returnNumber(){
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Введите имя удаляемого контакта: ");
+        System.out.print("Введите имя контакта, у которого необходимо найти номер: ");
         String name = scanner.nextLine();
         while (!(Metods.correctPeople(name))) {
             System.out.print("Введено не корректное имя.\n" +
@@ -60,6 +60,7 @@ public class PhoneBook {
         }
     }
 
+    //есть ли имя в справочнике
     public boolean checkName() {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Введите имя контакта: ");
@@ -76,12 +77,13 @@ public class PhoneBook {
         }
     }
 
+    //есть ли номер в справочнике
     public boolean checkNumber() {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Введите номер: ");
         String num = scanner.nextLine();
 
-        while (!(num.matches("\\d+") && num.length()==11)) {
+        while (!(num.matches("\\d+") || num.length()!=11)) {
             System.out.print("Введено не корректное имя.\n" +
                     "Пожалуйста,введите заново: ");
             num = scanner.nextLine();

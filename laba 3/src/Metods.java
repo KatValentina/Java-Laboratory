@@ -73,7 +73,7 @@ public class Metods {
 
     //проверка на допустимое имя в справачник
     public static boolean correctPeople(String s) {
-        if (s==null) {
+        if (s==null || s.isEmpty() || s.contains(" ")) {
             return false;
         }
 

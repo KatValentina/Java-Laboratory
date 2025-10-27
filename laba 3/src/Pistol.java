@@ -14,6 +14,7 @@ public class Pistol {
         return maxCount;
     }
 
+    //разряжаем пистолет
     public int discharged() {
         int cartridges = getCount();
         this.count = 0;
@@ -30,6 +31,7 @@ public class Pistol {
         }
     }
 
+    //перезаряжаем пистолет
     public int reload(int cartridges) {
         if (cartridges<0) {
             throw new IllegalArgumentException("Количество патронов не может быть отрицательным.");
@@ -46,7 +48,7 @@ public class Pistol {
         }
     }
 
-    public boolean isСharged(Pistol gun) {
+    public boolean isCharged(Pistol gun) {
         if (gun.count>0) {
             return true;
         } else {
@@ -72,7 +74,7 @@ public class Pistol {
     @Override
     public String toString() {
         return "Пистолет найден. Количество патронов: "+getCount()+". " +
-                "Заряжен ? " + isСharged(this)+". Сколько патронов вмещает? "+
+                "Заряжен ? " + isCharged(this)+". Сколько патронов вмещает? "+
                 getMaxCount();
     }
 }

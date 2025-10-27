@@ -94,8 +94,41 @@ public class Main {
                     String s1 = book.addRecord("Иван","89660000001");
                     String s2 = book.addRecord("Полина","89660000012");
                     System.out.println("Уже существующие записи в справочнике: "+book.toString());
-                    String[] arr = book.allNumber();
+                    String name,issue,oldN;
+
+//                    System.out.println("\nВы можете проверить, есть ли контакт с конкретным именем в справочнике.");
+//                    System.out.println("Есть ли этот человек в справочнике: "+book.checkName());
+
+                    System.out.print("\nВведите имя контакта,которого хотите внести в справочник: ");
+                    name = scanner.nextLine();
+                    System.out.print("Введите его номер: ");
+                    issue = scanner.nextLine();
+                    oldN = book.addRecord(name,issue);
+                    System.out.println("Результат добавления номера. Старый номер: "+oldN);
+//
+//                    System.out.println("Массив всех имён контактов:");
+                    String[] arr = book.allName();
+//                    Metods.printArr(arr);
+
+                    System.out.println("\nВы можете проверить, есть ли в справочнике номер человека.");
+                    System.out.println("Есть ли этот контакт в справочнике: "+book.checkNumber());
+
+                    System.out.println("Полный массив номеров в справочнике: ");
+                    arr = book.allNumber();
                     Metods.printArr(arr);
+//
+//                    System.out.println("\nВы можете удалить контакт.");
+//                    book.delRecord();
+
+                    System.out.println("Изменённый список контактов: ");
+                    arr = book.allPair();
+                    Metods.printArr(arr);
+                    System.out.print("Количество пар Имя-номер в справочнике: "+book.sizeBook());
+
+//                    System.out.println("\nВы можете найти номер конкретного контакта в справочнике.");
+//                    oldN = book.returnNumber();
+//                    System.out.print("Номер контакта: "+oldN);
+
                 }catch (IllegalStateException e) {
                     System.out.println(e.getMessage());
                 }
@@ -103,6 +136,75 @@ public class Main {
                 break;
             }
             case "3": {
+                System.out.println("1 - автомат по умолчанию( патронник вмещает 30 патронов, Скорострельность 30 выстр/сек)" +
+                        "\n2 - автомат, с указанием размера патронника, но скорострельность равна половине обоймы" +
+                        "\n3 - автомат, где можно указать и размер патронника, и скорострельность");
+                System.out.print("Сейчас вам предстоит создать автомат. Выберите способ: ");
+                try {
+                    String chois = scanner.nextLine();
+                    Machine pistol=null;
+                    int maxCartridges, speed,remains;
+                    switch (chois) {
+                        case "1": {
+                            pistol = new Machine();
+                            System.out.println(pistol.toString());
+                            break;
+                        }
+                        case "2": {
+                            System.out.println("Сейчас вы введёте размер патронника.");
+                            maxCartridges = Metods.isInt();
+                            pistol = new Machine(maxCartridges);
+                            System.out.println(pistol.toString());
+                            break;
+                        }
+                        case "3": {
+                            System.out.println("Сейчас вы введёте размер патронника.");
+                            maxCartridges = Metods.isInt();
+                            System.out.println("Нужно указать скорострельность");
+                            speed = Metods.isInt();
+                            pistol = new Machine(maxCartridges,speed);
+                            System.out.println(pistol.toString());
+                            break;
+                        }
+                        default: System.out.println("Нет способа создания");
+                        break;
+                    }
+
+                    if (pistol==null) {
+                        throw new IllegalStateException("Автомат не был создан.");
+                    } else {
+                        System.out.println("\nСколько патронов зарядить в пистолет?");
+                        int cartridges = Metods.isInt();
+                        remains = pistol.reload(cartridges);
+                        System.out.println("Лишние патроны, которые не вошли в патронник: "+remains);
+                        System.out.println(pistol.toString());
+
+                        System.out.println("1 - количество выстрелов соответствует скорострельности" +
+                                "\n2 - стрелять n секунд из автомата ");
+                        System.out.print("Как вы хотите стрелять? ");
+                        String s = scanner.nextLine();
+                        switch (s) {
+                            case "1": {
+                                pistol.shot(pistol.getRateOffire());
+                                System.out.println(pistol.toString());
+                                break;
+                            }
+                            case "2": {
+                                System.out.println("Вам предстоит ввести в течении скольки секунд из автомата будете стрелять");
+                                int sec = Metods.isInt();
+                                pistol.shotSec(sec);
+                                System.out.println(pistol.toString());
+                                break;
+                            }
+                            default: System.out.println("Нет способа");
+                            break;
+                        }
+                    }
+                }catch (IllegalArgumentException e) {
+                    System.out.println(e.getMessage());
+                } catch (IllegalStateException e) {
+                    System.out.println(e.getMessage());
+                }
                 break;
             }
             default: System.out.println("Нет такого задания");
