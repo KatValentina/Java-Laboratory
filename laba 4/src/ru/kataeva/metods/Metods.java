@@ -1,5 +1,6 @@
 package ru.kataeva.metods;
 
+import java.util.*;
 import java.util.Scanner;
 
 public class Metods {
@@ -99,10 +100,11 @@ public class Metods {
         }
     }
 
-    //проход по строковому массиву
-    public static void printArr(String[]s) {
-        for (int i=0;i<s.length;i++) {
-            System.out.println(s[i]);
+    // Проход по списку
+    public static <T> void printArr(List<T> s) {
+        for (T item : s) {
+            System.out.print(item + " ");
         }
+        System.out.println();
     }
 }
