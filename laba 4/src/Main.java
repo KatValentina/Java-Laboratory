@@ -14,7 +14,7 @@ public class Main {
             Integer value = box.takeItem();
             System.out.println("В коробке лежит: " + value);
         } else {
-            System.out.println("Коробка пуста");
+            throw new IllegalStateException("Коробка пуста!");
         }
     }
 
@@ -63,7 +63,7 @@ public class Main {
                         Box<Integer> box = new Box<Integer>();
                         System.out.println("Вам предстоит ввести число,которое вы хотите положить в коробку");
                         try {
-                            int x = (int) Metods.isInt();
+                            int x = Metods.isInt().intValue();
                             box.putItem(x);
                             System.out.println("В коробке что-то есть? " + box.isEmpty());
                             onBox(box);
@@ -78,9 +78,9 @@ public class Main {
                     case "3": {
                         System.out.println("Сейчас вам предстоит ввести значения, которые хотите сравнить");
                         try {
-                            int x = (int) Metods.isInt();
+                            int x = Metods.isInt().intValue();
                             Num n1 = new Num(x);
-                            int y = (int) Metods.isInt();
+                            int y = Metods.isInt().intValue();
                             Num n2 = new Num(y);
                             System.out.println("Если вывелось отрицательное число, то первое число меньше второго." +
                                     "\nЕсли вывелось положительное, то первое число больше второго. " +
