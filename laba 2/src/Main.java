@@ -56,6 +56,10 @@ public class Main {
                 Worker person1 = new Worker("Петров",depIT);
                 Worker person2 = new Worker("Козлов",depIT);
                 Worker person3 = new Worker("Сидоров",depIT);
+                Worker [] arr = depIT.getWorkers();
+                for (int i=0;i< arr.length;i++) {
+                    System.out.println(arr[i].getName());
+                }
 
                 depIT.setChief(person2);
 

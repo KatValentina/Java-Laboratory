@@ -71,7 +71,7 @@ public class Metods {
         }
     }
 
-    //проверка на допустимое имя в справачник
+    //проверка на допустимое имя в справочник
     public static boolean correctPeople(String s) {
         if (s==null || s.isEmpty() || s.contains(" ")) {
             return false;

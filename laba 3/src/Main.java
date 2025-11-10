@@ -128,7 +128,6 @@ public class Main {
 //                    System.out.println("\nВы можете найти номер конкретного контакта в справочнике.");
 //                    oldN = book.returnNumber();
 //                    System.out.print("Номер контакта: "+oldN);
-
                 }catch (IllegalStateException e) {
                     System.out.println(e.getMessage());
                 }

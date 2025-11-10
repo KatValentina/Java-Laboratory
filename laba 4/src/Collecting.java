@@ -1,5 +1,4 @@
 import ru.kataeva.metods.Metods;
-
 import java.util.Collection;
 import java.util.*;
 import java.util.function.*;

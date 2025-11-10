@@ -2,6 +2,7 @@ import java.util.List;
 import java.util.*;
 import java.util.function.*;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 import ru.kataeva.metods.Metods;
 
@@ -129,6 +130,126 @@ public class Main {
                 num = scanner.nextLine();
                 switch (num) {
                     case "1": {
+                        int n;
+                        System.out.println("\n=== МЕНЮ ===");
+                        System.out.println("1.Преобразовать строки в список чисел,где каждое число соответствует длине каждой строки.");
+                        System.out.println("2.Преобразовать список чисел,чтобы все отрицательные числа стали положительными, " +
+                                "а положительные остались без изменений");
+                        System.out.println("3.Передайте в метод список состоящий из массивов целых чисел, а получите список в\n" +
+                                "котором будут только максимальные значения каждого из исходных массивов");
+                        System.out.print("Выберите действие: ");
+                        String sh = scanner.nextLine();
+                        try {
+                            switch (sh) {
+                                case "1": {
+                                    System.out.print("Сколько строк будет в списке.");
+                                    System.out.println("При вводе вещественного числа в поле с количеством " +
+                                            "значений в списке, оно будет преобразовано в значение типа int");
+                                    n = Metods.isInt().intValue();
+                                    if (n < 0) {
+                                        throw new IllegalArgumentException("Количество значений в списке не может быть отрицательно");
+                                    } else {
+                                        System.out.println("\nСейчас вам предстоит заполнить список значениями");
+                                        List<String> lines = Collecting.inputStr(n);
+                                        if (lines.isEmpty()) {
+                                            System.out.println("Список чисел пуст!");
+                                        } else {
+                                            List<Integer> stringLengths = Functi.transformList(lines, String::length);
+
+                                            System.out.println("1. Длины строк:");
+                                            System.out.println("Исходный список: " + lines);
+                                            System.out.println("Результат: " + stringLengths);
+                                        }
+                                    }
+                                    break;
+                                }
+                                case "2": {
+                                    System.out.print("Сколько чисел будет в списке.");
+                                    System.out.println("При вводе вещественного числа в поле с количеством " +
+                                            "значений в списке, оно будет преобразовано в значение типа int");
+                                    n = Metods.isInt().intValue();
+                                    if (n < 0) {
+                                        throw new IllegalArgumentException("Количество значений в списке не может быть отрицательно");
+                                    } else {
+                                        System.out.println("\nСейчас вам предстоит заполнить список значениями");
+                                        List<Number> digit = Collecting.inputNumbers(n);
+                                        if (digit.isEmpty()) {
+                                            System.out.println("Список чисел пуст!");
+                                        } else {
+                                            List<Number> result = Functi.transformList(digit, i -> {
+                                                double value = i.doubleValue();
+                                                if (value < 0) {
+                                                    // Возвращаем положительное значение того же типа
+                                                    if (i instanceof Integer) return Math.abs(i.intValue());
+                                                    if (i instanceof Double) return Math.abs(i.doubleValue());
+                                                    if (i instanceof Long) return Math.abs(i.longValue());
+                                                    if (i instanceof Float) return Math.abs(i.floatValue());
+                                                }
+                                                return i; // если уже положительное, возвращаем как есть
+                                            });
+                                            System.out.print("Исходный список: " + digit);
+                                            System.out.print("\nРезультат: " + result);
+                                        }
+                                    }
+                                    break;
+                                }
+                                case "3": {
+                                    System.out.println("Сейчас будут созданы 2 массива");
+                                    System.out.print("Сколько чисел будет в списках.");
+                                    System.out.println("При вводе вещественного числа в поле с количеством " +
+                                            "значений в списке, оно будет преобразовано в значение типа int");
+                                    n = Metods.isInt().intValue();
+                                    int m = Metods.isInt().intValue();
+                                    if (n < 0 || m < 0 ) {
+                                        throw new IllegalArgumentException("Количество значений в списке не может быть отрицательно");
+                                    } else {
+
+                                        System.out.println("Первый массив.");
+                                        Number[] s1 = new Number[n];
+                                        for (int i=0;i<n;i++){
+                                            s1[i]=Metods.isInt();
+                                        }
+
+                                        System.out.println("Второй массив.");
+                                        Number[] s2 = new Number[m];
+                                        for (int i=0;i<m;i++){
+                                            s2[i]=Metods.isInt();
+                                        }
+                                        if (s1 == null || s1.length == 0 || s2 == null || s2.length == 0) {
+                                            System.out.println("Один или оба массива пусты или массив null");
+                                        } else {
+                                            List<Number[]> arrays = Arrays.asList(
+                                                    s1,
+                                                    s2
+                                            );
+
+                                            List<Number> maxValues = Functi.transformList(arrays, arr -> {
+                                                if (arr == null || arr.length == 0) {
+                                                    return null;
+                                                }
+                                                return Arrays.stream(arr)
+                                                        .max(Comparator.comparingDouble(Number::doubleValue))
+                                                        .orElse(null);
+                                            });
+
+                                            System.out.println("\nМаксимальные значения массивов:");
+                                            System.out.println("Исходные массивы: " +
+                                                    arrays.stream()
+                                                            .map(arr -> Arrays.toString(arr))
+                                                            .collect(Collectors.toList()));
+                                            System.out.println("Максимумы: " + maxValues);
+                                        }
+                                    }
+                                    break;
+                                }
+                                default: System.out.println("Нет такого функционала");
+                                    break;
+                            }
+                        } catch(IllegalArgumentException e) {
+                            System.out.println(e.getMessage());
+                        } catch(IllegalStateException e) {
+                            System.out.println(e.getMessage());
+                        }
                         break;
                     }
                     case "2": {
