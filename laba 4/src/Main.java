@@ -30,20 +30,18 @@ public class Main {
         for (Box<? extends Number> box : boxes) {
             if (box != null && box.isEmpty()) {
                 Number value = box.getItem();
-                if (value != null) {
-                    double doubleValue = value.doubleValue();
-                    if (!found) {
-                        max = doubleValue;
-                        found = true;
-                    } else if (doubleValue > max) {
-                        max = doubleValue;
-                    }
+                double doubleValue = value.doubleValue();
+                if (!found) {
+                    max = doubleValue;
+                    found = true;
+                } else if (doubleValue > max) {
+                    max = doubleValue;
                 }
             }
         }
 
         if (!found) {
-            throw new IllegalArgumentException("Не найдено ни одного непустого значения в коробках");
+            throw new IllegalArgumentException("Не найдено ни одной не пустой коробки");
         }
         return max;
     }
@@ -82,6 +80,9 @@ public class Main {
                             Num n1 = new Num(x);
                             int y = Metods.isInt().intValue();
                             Num n2 = new Num(y);
+                            if (n1==null || n2==null) {
+                                throw new IllegalStateException("Один или оба объекта null");
+                            }
                             System.out.println("Если вывелось отрицательное число, то первое число меньше второго." +
                                     "\nЕсли вывелось положительное, то первое число больше второго. " +
                                     "\nЕсли вышло 0, то числа равны");
@@ -151,7 +152,7 @@ public class Main {
                                     } else {
                                         System.out.println("\nСейчас вам предстоит заполнить список значениями");
                                         List<String> lines = Collecting.inputStr(n);
-                                        if (lines.isEmpty()) {
+                                        if (lines.isEmpty() || lines==null) {
                                             System.out.println("Список чисел пуст!");
                                         } else {
                                             List<Integer> stringLengths = Functi.transformList(lines, String::length);
@@ -173,7 +174,7 @@ public class Main {
                                     } else {
                                         System.out.println("\nСейчас вам предстоит заполнить список значениями");
                                         List<Number> digit = Collecting.inputNumbers(n);
-                                        if (digit.isEmpty()) {
+                                        if (digit.isEmpty() || digit==null) {
                                             System.out.println("Список чисел пуст!");
                                         } else {
                                             List<Number> result = Functi.transformList(digit, i -> {
