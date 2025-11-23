@@ -157,9 +157,8 @@ public class Main {
                                         } else {
                                             List<Integer> stringLengths = Functi.transformList(lines, String::length);
 
-                                            System.out.println("1. Длины строк:");
                                             System.out.println("Исходный список: " + lines);
-                                            System.out.println("Результат: " + stringLengths);
+                                            System.out.println("Длины строк: " + stringLengths);
                                         }
                                     }
                                     break;
@@ -180,13 +179,10 @@ public class Main {
                                             List<Number> result = Functi.transformList(digit, i -> {
                                                 double value = i.doubleValue();
                                                 if (value < 0) {
-                                                    // Возвращаем положительное значение того же типа
-                                                    if (i instanceof Integer) return Math.abs(i.intValue());
-                                                    if (i instanceof Double) return Math.abs(i.doubleValue());
-                                                    if (i instanceof Long) return Math.abs(i.longValue());
-                                                    if (i instanceof Float) return Math.abs(i.floatValue());
+
+                                                    return Math.abs(value);
                                                 }
-                                                return i; // если уже положительное, возвращаем как есть
+                                                return i;
                                             });
                                             System.out.print("Исходный список: " + digit);
                                             System.out.print("\nРезультат: " + result);
