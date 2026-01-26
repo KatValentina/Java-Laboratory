@@ -1,7 +1,7 @@
-public class Num implements Comparable<Num> {
+public class Num implements Comparable<Num>{
     private int value;
 
-    public int getValue() {
+    public int setValue() {
         return value;
     }
 
@@ -9,7 +9,12 @@ public class Num implements Comparable<Num> {
         this.value = n;
     }
 
-    public int compare(Num n) {
-        return this.value - n.value;
+    public int compare (Num n) {
+       return this.value - n.value;
+    }
+
+    @Override
+    public String toString() {
+        return "Число: " + this.value;
     }
 }

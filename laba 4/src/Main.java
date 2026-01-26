@@ -1,341 +1,293 @@
-import java.util.List;
-import java.util.*;
-import java.util.function.*;
-import java.util.Scanner;
-import java.util.stream.Collectors;
+import Filters.Page2;
+import Functions.Page1;
 
-import ru.kataeva.metods.Metods;
+import java.util.*;
+import java.util.function.Function;
+
 
 public class Main {
 
-    // Метод для работы с коробкой
-    public static void onBox(Box<Integer> box) {
-        if (box.isEmpty()) {
-            Integer value = box.takeItem();
-            System.out.println("В коробке лежит: " + value);
+    //Метод для коробки (подкидываем коробку. Где верх?)
+    public static <T> void dropBox(Box<T> box) {
+        Random random = new Random();
+        int rand = random.nextInt(2);
+        if (rand == 1) {
+            System.out.println("Коробка вверх дном. Вы не знаете что внутри");
         } else {
-            throw new IllegalStateException("Коробка пуста!");
+            T item = box.takeObject();
+            System.out.print("О! Коробка к верху крышкой. Вы " +
+                    "достаёте предмет: "+item);
+
         }
     }
 
-    //метод для работы с массивом коробок
-    public static double findMaxValue(Box<? extends Number>[] boxes) {
-        if (boxes == null || boxes.length == 0) {
-            throw new IllegalArgumentException("Массив коробок не может быть пустым или null");
-        }
-
-        double max=0;
+    //метод для работы со списком коробок
+    public static double maxValue(Box<? extends Number>[] boxes) {
         boolean found = false;
+        double max = 0.0;
 
-        for (Box<? extends Number> box : boxes) {
-            if (box != null && box.isEmpty()) {
-                Number value = box.getItem();
-                double doubleValue = value.doubleValue();
+        for (Box<? extends Number> s : boxes) {
+            if (s != null && !s.isEmpty()) {
+                double value = s.getObject().doubleValue();
                 if (!found) {
-                    max = doubleValue;
+                    max = value;
                     found = true;
-                } else if (doubleValue > max) {
-                    max = doubleValue;
+                } else if (value > max) {
+                    max = value;
                 }
             }
         }
 
         if (!found) {
-            throw new IllegalArgumentException("Не найдено ни одной не пустой коробки");
+            throw new IllegalStateException("Не найдено ни одной непустой коробки");
         }
         return max;
     }
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        String number;
-        System.out.print("Введите номер задания: ");
-        number = scanner.nextLine();
-        switch (number) {
-            case "1": {
-                String num;
-                System.out.print("Номер подзадания: ");
-                num = scanner.nextLine();
-                switch (num) {
-                    case "1": {
-                        Box<Integer> box = new Box<Integer>();
-                        System.out.println("Вам предстоит ввести число,которое вы хотите положить в коробку");
-                        try {
-                            int x = Metods.isInt().intValue();
-                            box.putItem(x);
-                            System.out.println("В коробке что-то есть? " + box.isEmpty());
-                            onBox(box);
-                            System.out.println("В коробке что-то есть? " + box.isEmpty());
-                            System.out.println(box.toString());
 
-                        } catch (IllegalStateException e) {
+        String value;
+        System.out.print("Номер блока: ");
+        Scanner scanner = new Scanner(System.in);
+        value = scanner.nextLine();
+        switch (value) {
+            case "1":
+                String val;
+                System.out.print("Введите номер задания: ");
+                val = scanner.nextLine();
+                switch (val) {
+                    case "1":
+                        Box<Integer> box = new Box<Integer>();
+                        System.out.println("Сейчас вам предстоит положить число в коробку.");
+                        try {
+                            System.out.print("Введите целочисленное значение: ");
+                            String n = scanner.nextLine();
+                            while (!Metods.isInt(n)) {
+                                System.out.print("Введите новое целочисленное значение: ");
+                                n = scanner.nextLine();
+                            }
+                            int number = Integer.parseInt(n);
+                            box.putObject(number);
+                            dropBox(box);
+                            int item = box.takeObject();
+                            System.out.print("В коробке лежало: "+ item);
+
+                        }catch (IllegalStateException e) {
                             System.out.println(e.getMessage());
                         }
                         break;
-                    }
-                    case "3": {
-                        System.out.println("Сейчас вам предстоит ввести значения, которые хотите сравнить");
+                    case "3":
+                        System.out.println("Сравним два целочисленных значения. ");
                         try {
-                            int x = Metods.isInt().intValue();
-                            Num n1 = new Num(x);
-                            int y = Metods.isInt().intValue();
-                            Num n2 = new Num(y);
-                            if (n1==null || n2==null) {
+                            System.out.print("Введите 1 целочисленное значение: ");
+                            String n = scanner.nextLine();
+                            while (!Metods.isInt(n)) {
+                                System.out.print("Введите новое целочисленное значение: ");
+                                n = scanner.nextLine();
+                            }
+                            Num num1 = new Num( Integer.parseInt(n) );
+                            System.out.print("Введите 2 целочисленное значение: ");
+                            n = scanner.nextLine();
+                            while (!Metods.isInt(n)) {
+                                System.out.print("Введите новое целочисленное значение: ");
+                                n = scanner.nextLine();
+                            }
+                            Num num2 = new Num( Integer.parseInt(n) );
+                            if (num1==null || num2==null) {
                                 throw new IllegalStateException("Один или оба объекта null");
                             }
-                            System.out.println("Если вывелось отрицательное число, то первое число меньше второго." +
-                                    "\nЕсли вывелось положительное, то первое число больше второго. " +
-                                    "\nЕсли вышло 0, то числа равны");
-                            System.out.print("Результат сравнения: " + n1.compare(n2));
 
-                        } catch (IllegalStateException e) {
+                            int result = num1.compare(num2);
+                            System.out.println("Если вывелось отрицательное число, то первое число меньше второго.");
+                            System.out.println("Если вывелось положительное, то первое число больше второго.");
+                            System.out.println("Если вышло 0, то числа равны");
+                            System.out.println("Результат сравнения: "+ result);
+                        }catch (IllegalStateException e) {
                             System.out.println(e.getMessage());
                         }
                         break;
-                    }
-                    default: System.out.println("Нет такого подзадания");
-                    break;
+                    default:
+                        System.out.println("Нет такого задания");
+                        break;
+
                 }
                 break;
-            }
-            case "2": {
-                Box<Integer> box1 = new Box<Integer>();
-                Box<Double> box2 = new Box<Double>();
-                Box<Float> box3 = new Box<Float>();
-                System.out.println("Вам предстоит создать 3 коробки.");
+            case "2":
+                System.out.println("Создадим 3 разные коробки.");
                 try {
-                    System.out.println("Первая коробка cо значением int(если было введено вещественное число," +
-                            "то оно будет преобразовано в целое.");
-                    box1.putItem(Metods.isInt().intValue());
+                    //1 коробка
+                    Box<Integer> box1 = new Box<Integer>();
+                    System.out.print("Создадим 1 коробку.Введите целочисленное значение: ");
+                    String n = scanner.nextLine();
+                    while (!Metods.isInt(n)) {
+                        System.out.print("Введите новое целочисленное значение: ");
+                        n = scanner.nextLine();
+                    }
+                    int number = Integer.parseInt(n);
+                    box1.putObject(number);
 
-                    System.out.println("Вторая коробка со значением double.");
-                    box2.putItem(Metods.isInt().doubleValue());
+                    //2 коробка
+                    Box<Float> box2 = new Box<Float>();
+                    System.out.print("Создадим 2 коробку.Введите значение типа float: ");
+                    n = scanner.nextLine();
+                    while (!Metods.isNumber(n)) {
+                        System.out.print("Введите новое значение: ");
+                        n = scanner.nextLine();
+                    }
+                    float num2 = Float.parseFloat(n);
+                    box2.putObject(num2);
 
-                    System.out.println("Третья коробка со значением float. ");
-                    box3.putItem(Metods.isInt().floatValue());
+                    //3 коробка
+                    Box<Double> box3 = new Box<Double>();
+                    System.out.print("Создадим 2 коробку.Введите значение типа double: ");
+                    n = scanner.nextLine();
+                    while (!Metods.isNumber(n)) {
+                        System.out.print("Введите новое значение: ");
+                        n = scanner.nextLine();
+                    }
+                    Double num3 = Double.parseDouble(n);
+                    box3.putObject(num3);
 
                     Box<? extends Number>[] boxes = new Box[]{box1, box2, box3};
-                    double max = findMaxValue(boxes);
-                    System.out.println("Максимальное значение: " + max);
+                    System.out.println("Самое большое число в коробках: "+maxValue(boxes));
 
                 } catch (IllegalStateException e) {
                     System.out.println(e.getMessage());
-                } catch (IllegalArgumentException e) {
-                    System.out.println(e.getMessage());
                 }
                 break;
-            }
-            case "3": {
-                String num;
-                System.out.print("Номер подзадания: ");
-                num = scanner.nextLine();
-                switch (num) {
-                    case "1": {
-                        int n;
-                        System.out.println("\n=== МЕНЮ ===");
-                        System.out.println("1.Преобразовать строки в список чисел,где каждое число соответствует длине каждой строки.");
-                        System.out.println("2.Преобразовать список чисел,чтобы все отрицательные числа стали положительными, " +
-                                "а положительные остались без изменений");
-                        System.out.println("3.Передайте в метод список состоящий из массивов целых чисел, а получите список в\n" +
-                                "котором будут только максимальные значения каждого из исходных массивов");
-                        System.out.print("Выберите действие: ");
-                        String sh = scanner.nextLine();
+            case "3":
+                System.out.print("Введите номер задания: ");
+                val = scanner.nextLine();
+                switch (val) {
+                    case "1":
                         try {
-                            switch (sh) {
-                                case "1": {
-                                    System.out.print("Сколько строк будет в списке.");
-                                    System.out.println("При вводе вещественного числа в поле с количеством " +
-                                            "значений в списке, оно будет преобразовано в значение типа int");
-                                    n = Metods.isInt().intValue();
-                                    if (n < 0) {
-                                        throw new IllegalArgumentException("Количество значений в списке не может быть отрицательно");
-                                    } else {
-                                        System.out.println("\nСейчас вам предстоит заполнить список значениями");
-                                        List<String> lines = Collecting.inputStr(n);
-                                        if (lines.isEmpty() || lines==null) {
-                                            System.out.println("Список чисел пуст!");
-                                        } else {
-                                            List<Integer> stringLengths = Functi.transformList(lines, String::length);
-
-                                            System.out.println("Исходный список: " + lines);
-                                            System.out.println("Длины строк: " + stringLengths);
-                                        }
-                                    }
-                                    break;
-                                }
-                                case "2": {
-                                    System.out.print("Сколько чисел будет в списке.");
-                                    System.out.println("При вводе вещественного числа в поле с количеством " +
-                                            "значений в списке, оно будет преобразовано в значение типа int");
-                                    n = Metods.isInt().intValue();
-                                    if (n < 0) {
-                                        throw new IllegalArgumentException("Количество значений в списке не может быть отрицательно");
-                                    } else {
-                                        System.out.println("\nСейчас вам предстоит заполнить список значениями");
-                                        List<Number> digit = Collecting.inputNumbers(n);
-                                        if (digit.isEmpty() || digit==null) {
-                                            System.out.println("Список чисел пуст!");
-                                        } else {
-                                            List<Number> result = Functi.transformList(digit, i -> {
-                                                double value = i.doubleValue();
-                                                if (value < 0) {
-
-                                                    return Math.abs(value);
-                                                }
-                                                return i;
-                                            });
-                                            System.out.print("Исходный список: " + digit);
-                                            System.out.print("\nРезультат: " + result);
-                                        }
-                                    }
-                                    break;
-                                }
-                                case "3": {
-                                    System.out.println("Сейчас будут созданы 2 массива");
-                                    System.out.print("Сколько чисел будет в списках.");
-                                    System.out.println("При вводе вещественного числа в поле с количеством " +
-                                            "значений в списке, оно будет преобразовано в значение типа int");
-                                    n = Metods.isInt().intValue();
-                                    int m = Metods.isInt().intValue();
-                                    if (n < 0 || m < 0 ) {
-                                        throw new IllegalArgumentException("Количество значений в списке не может быть отрицательно");
-                                    } else {
-
-                                        System.out.println("Первый массив.");
-                                        Number[] s1 = new Number[n];
-                                        for (int i=0;i<n;i++){
-                                            s1[i]=Metods.isInt();
-                                        }
-
-                                        System.out.println("Второй массив.");
-                                        Number[] s2 = new Number[m];
-                                        for (int i=0;i<m;i++){
-                                            s2[i]=Metods.isInt();
-                                        }
-                                        if (s1 == null || s1.length == 0 || s2 == null || s2.length == 0) {
-                                            System.out.println("Один или оба массива пусты или массив null");
-                                        } else {
-                                            List<Number[]> arrays = Arrays.asList(
-                                                    s1,
-                                                    s2
-                                            );
-
-                                            List<Number> maxValues = Functi.transformList(arrays, arr -> {
-                                                if (arr == null || arr.length == 0) {
-                                                    return null;
-                                                }
-                                                return Arrays.stream(arr)
-                                                        .max(Comparator.comparingDouble(Number::doubleValue))
-                                                        .orElse(null);
-                                            });
-
-                                            System.out.println("\nМаксимальные значения массивов:");
-                                            System.out.println("Исходные массивы: " +
-                                                    arrays.stream()
-                                                            .map(arr -> Arrays.toString(arr))
-                                                            .collect(Collectors.toList()));
-                                            System.out.println("Максимумы: " + maxValues);
-                                        }
-                                    }
-                                    break;
-                                }
-                                default: System.out.println("Нет такого функционала");
-                                    break;
+                            System.out.println("Первая часть задания. Работа со строками и их длинами.");
+                            String n;
+                            System.out.print("Сколько значений хотите ввести: ");
+                            n = scanner.nextLine();
+                            while (!Metods.isInt(n)) {
+                                System.out.print("Введите новое значение: ");
+                                n = scanner.nextLine();
                             }
-                        } catch(IllegalArgumentException e) {
-                            System.out.println(e.getMessage());
-                        } catch(IllegalStateException e) {
+                            int count = Integer.parseInt(n);
+                            if(count<0) {
+                                throw new IllegalStateException("Количество элементов в списке отрицательно");
+                            }
+                            List<String> z= Metods.addEl(count);
+                            List<Integer> lenght = Page1.transform(z,s1 -> s1.length());
+                            System.out.println("Длины строк: " + lenght);
+
+
+                            System.out.println("Вторая часть задания. Работа с числами и их положительностью" +
+                                    " и отрицательностью");
+                            System.out.print("Сколько значений хотите ввести: ");
+                            n = scanner.nextLine();
+                            while (!Metods.isInt(n)) {
+                                System.out.print("Введите новое значение: ");
+                                n = scanner.nextLine();
+                            }
+                            count = Integer.parseInt(n);
+                            if(count<0) {
+                                throw new IllegalStateException("Количество элементов в списке отрицательно");
+                            }
+                            List<Integer> s1 = Metods.addEl2(count);
+                            List<Integer> r = Page1.transform(s1,i -> i < 0 ? -i : i);
+                            System.out.println("Обратные значения: " + r);
+
+
+                            System.out.print("Третья часть задания. Работа с массивами и их максимальными значениями");
+                            System.out.println("\nСоздадим 3 массива");
+                            int[] m1 = Metods.fullMas();
+                            int[] m2 = Metods.fullMas();
+                            int[] m3 = Metods.fullMas();
+                            List<int[]> arrays = Arrays.asList( m1, m2, m3 );
+                            List<Integer> maxValues = Page1.transform(arrays, arr -> {
+                                if (arr.length == 0) {
+                                    return null;
+                                }
+
+                                int max = arr[0];
+                                for (int x : arr) if (x > max) max = x;
+                                return max;
+                            });
+                            System.out.println("Максимальные элементы: " + maxValues);
+
+                        }catch (IllegalStateException e) {
                             System.out.println(e.getMessage());
                         }
                         break;
-                    }
-                    case "2": {
-                        break;
-                    }
-                    case "3": {
-                        break;
-                    }
-                    case "4": {
-                        int n;
-                        System.out.println("\n=== МЕНЮ ===");
-                        System.out.println("1. Разделить числа на положительные и отрицательные");
-                        System.out.println("2. Сгруппировать строки по длине");
-                        System.out.println("3. Получить уникальные строки");
-                        System.out.print("Выберите действие: ");
-                        String sh = scanner.nextLine();
+                    case "2":
                         try {
-                            switch (sh) {
-                                case "1": {
-                                    System.out.print("Сколько чисел будет в списке.");
-                                    System.out.println("При вводе вещественного числа в поле с количеством " +
-                                            "значений в списке, оно будет преобразовано в значение типа int");
-                                    n = Metods.isInt().intValue();
-                                    if (n < 0) {
-                                        throw new IllegalArgumentException("Количество значений в списке не может быть отрицательно");
-                                    } else {
-                                        System.out.println("\nСейчас вам предстоит заполнить список значениями");
-                                        List<Number> digit = Collecting.inputNumbers(n);
-                                        if (digit.isEmpty()) {
-                                            System.out.println("Список чисел пуст!");
-                                        } else {
-                                            Collecting.listNum(digit);
-                                        }
-                                    }
-                                    break;
-                                }
-                                case "2": {
-                                    System.out.print("Сколько строк будет в списке.");
-                                    System.out.println("При вводе вещественного числа в поле с количеством " +
-                                            "значений в списке, оно будет преобразовано в значение типа int");
-                                    n = Metods.isInt().intValue();
-                                    if (n < 0) {
-                                        throw new IllegalArgumentException("Количество значений в списке не может быть отрицательно");
-                                    } else {
-                                        System.out.println("\nСейчас вам предстоит заполнить список значениями");
-                                        List<String> lines = Collecting.inputStr(n);
-                                        if (lines.isEmpty()) {
-                                            System.out.println("Список чисел пуст!");
-                                        } else {
-                                            Collecting.listStrLength(lines);
-                                        }
-                                    }
-                                    break;
-                                }
-                                case "3": {
-                                    System.out.print("Сколько строк будет в списке.");
-                                    System.out.println("При вводе вещественного числа в поле с количеством " +
-                                            "значений в списке, оно будет преобразовано в значение типа int");
-                                    n = Metods.isInt().intValue();
-                                    if (n < 0) {
-                                        throw new IllegalArgumentException("Количество значений в списке не может быть отрицательно");
-                                    } else {
-                                        System.out.println("\nСейчас вам предстоит заполнить список значениями");
-                                        List<String> lines = Collecting.inputStr(n);
-                                        if (lines.isEmpty()) {
-                                            System.out.println("Список чисел пуст!");
-                                        } else {
-                                            Collecting.listStr(lines);
-                                        }
-                                    }
-                                    break;
-                                }
-                                default: System.out.println("Нет такого функционала");
-                                break;
+                            System.out.println("Первая часть задания. Фильтрация строк, длина которых меньше 3.");
+                            String n;
+                            System.out.print("Сколько значений хотите ввести: ");
+                            n = scanner.nextLine();
+                            while (!Metods.isInt(n)) {
+                                System.out.print("Введите новое значение: ");
+                                n = scanner.nextLine();
                             }
-                        } catch(IllegalArgumentException e) {
-                            System.out.println(e.getMessage());
-                        } catch(IllegalStateException e) {
+                            int count = Integer.parseInt(n);
+                            if(count<0) {
+                                throw new IllegalStateException("Количество элементов в списке отрицательно");
+                            }
+                            List<String> z= Metods.addEl(count);
+                            List<String> filtered = Page2.filter(z, s -> s.length() >= 3);
+                            System.out.println("Итог: " + filtered);
+
+
+                            System.out.println("Вторая часть задания. Работа только с отрицательными числами");
+                            System.out.print("Сколько значений хотите ввести: ");
+                            n = scanner.nextLine();
+                            while (!Metods.isInt(n)) {
+                                System.out.print("Введите новое значение: ");
+                                n = scanner.nextLine();
+                            }
+                            count = Integer.parseInt(n);
+                            if(count<0) {
+                                throw new IllegalStateException("Количество элементов в списке отрицательно");
+                            }
+                            List<Integer> s1 = Metods.addEl2(count);
+                            List<Integer> r= Page2.filter(s1, i -> i < 0);
+                            System.out.println("Только отрицательные: " + r);
+
+
+                            System.out.print("Третья часть задания. Работа с массивами, в которых все значения отрицательные");
+                            System.out.println("\nСоздадим 3 массива");
+                            int[] m1 = Metods.fullMas();
+                            int[] m2 = Metods.fullMas();
+                            int[] m3 = Metods.fullMas();
+                            List<int[]> arrays = Arrays.asList( m1, m2, m3 );
+                            List<int[]> noPositive = Page2.filter(arrays, arr -> {
+                                for (int x : arr) {
+                                    if (x > 0 || x==0) return false;
+                                }
+                                return true;
+                            });
+
+                            System.out.println("Подходящие массивы:");
+                            for (int[] a : noPositive) {
+                                System.out.println(Arrays.toString(a));
+                            }
+
+
+                        }catch (IllegalStateException e) {
                             System.out.println(e.getMessage());
                         }
                         break;
-                    }
-                    default: System.out.println("Нет такого подзадания");
-                    break;
+                    case "3":
+                        break;
+                    case "4":
+                        break;
+                    default:
+                        System.out.println("Нет такого задания");
+                        break;
                 }
                 break;
-            }
-            default: System.out.println("Нет такого задания");
-            break;
+            default:
+                System.out.println("Нет такого блока");
+                break;
+
         }
+
     }
 }

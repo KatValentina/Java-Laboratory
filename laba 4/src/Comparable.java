@@ -1,4 +1,3 @@
-public interface Comparable<T> {
-
-    int compare(T item);
+public interface Comparable <T>{
+    int compare (T item);
 }

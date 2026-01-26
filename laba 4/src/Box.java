@@ -1,45 +1,48 @@
 public class Box<T> {
-    private T item;
+    private T object;
 
-    public T getItem() {
-        return item;
+    public T getObject() {
+        return object;
     }
 
-    public Box() {
-        this.item = null;
+    public Box(){
+        this.object = null;
     }
 
-    public boolean isEmpty() {
-        if (this.item!=null) {
+    //проверка на заполненность
+    public boolean isEmpty(){
+        if (this.object == null) {
             return true;
         } else {
             return false;
         }
     }
 
-    public void putItem(T item) {
-        if(this.item != null) {
+
+    //положить в коробку
+    public void putObject(T object){
+        if (!isEmpty()) {
             throw new IllegalStateException("В коробке уже есть предмет!");
         }
-        this.item = item;
+        this.object = object;
     }
-
-    public T takeItem() {
-        if(this.item == null) {
-            throw new IllegalStateException("Коробка пуста!");
+    //забираем предмет
+    public T takeObject() {
+        if (isEmpty()) {
+            throw new IllegalStateException("\nКоробка пуста");
+        } else {
+            T value = getObject();
+            this.object = null;
+            return value;
         }
-        T temp = (T) this.item;
-        this.item = null;
-        return temp;
     }
 
     @Override
     public String toString() {
-        if (this.item == null) {
-            return "Box {   } ";
+        if (isEmpty()){
+            return "Коробка пуста!";
         } else {
-            return "Box{" + item + "}";
+            return "В коробке лежит: "+ getObject();
         }
     }
-    
 }
