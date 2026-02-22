@@ -6,14 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="6d0195bb-5e82-461c-8ab3-a6005d95a203" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Box.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Box.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Collecting.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Comparable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Comparable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Functi.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Num.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Num.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ru/kataeva/metods/Metods.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

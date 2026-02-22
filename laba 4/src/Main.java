@@ -2,8 +2,6 @@ import Filters.Page2;
 import Functions.Page1;
 
 import java.util.*;
-import java.util.function.Function;
-
 
 public class Main {
 
@@ -269,14 +267,9 @@ public class Main {
                                 System.out.println(Arrays.toString(a));
                             }
 
-
                         }catch (IllegalStateException e) {
                             System.out.println(e.getMessage());
                         }
-                        break;
-                    case "3":
-                        break;
-                    case "4":
                         break;
                     default:
                         System.out.println("Нет такого задания");
