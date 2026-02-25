@@ -8,8 +8,8 @@ public class CachedFrac  extends Fraction{
     }
 
     @Override
-    public void setNumer(int numerator) {
-        super.setNumer(numerator);
+    public void setNumer(int numer) {
+        super.setNumer(numer);
         cachedV = null;
     }
 
@@ -22,6 +22,7 @@ public class CachedFrac  extends Fraction{
     @Override
     public double getValue() {
         if (cachedV == null) {
+            System.out.println("Вычисляю");
             cachedV = super.getValue();
         }
         return cachedV;

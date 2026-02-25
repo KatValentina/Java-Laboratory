@@ -40,7 +40,7 @@ public class Fraction implements FracInter {
 
 
     public Fraction(int numer,int denom) {
-        if (denom ==0 ) {
+        if (denom == 0 ) {
             throw new IllegalStateException("\nЗнаменатель не должен быть равен 0");
         } else {
 
