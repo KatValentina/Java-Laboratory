@@ -1,4 +1,6 @@
-import Fraction.CachedFrac;
+import Fraction.*;
+import Kitty.*;
+
 import java.util.Scanner;
 
 public class Main {
@@ -29,16 +31,21 @@ public class Main {
                 System.out.println("Вещественное значение 1 дроби: "+f1.getValue());
                 System.out.print("Вещественное значение 1 дроби: "+f1.getValue());
 
-                System.out.print("Вещественное значение 2 дроби: "+f2.getValue());
+                System.out.print("\nВещественное значение 2 дроби: "+f2.getValue());
                 System.out.print("\nНовый числитель 1 дроби: ");
                 n1 = Metod.chekInt();
                 f1.setNumer(n1);
                 System.out.println("1 дробь: "+f1.toString());
                 System.out.print("Вещественное значение 1 дроби: "+f1.getValue());
-
-
                 break;
             case "2":
+                String name1;
+                System.out.println("Сейчас создадим котика.");
+                System.out.print("Имя: ");
+                name1 = Metod.chekStr();
+                Meowable m = new CountMeow(new Cat(name1));
+                Funs.meowsCare(m,m,m,m);
+                System.out.print("Кот мяукал " + ((CountMeow) m).getCount() + " раз");
                 break;
             case "3":
                 break;

@@ -22,7 +22,7 @@ public class CachedFrac  extends Fraction{
     @Override
     public double getValue() {
         if (cachedV == null) {
-            System.out.println("Вычисляю");
+            System.out.println("\nВычисляю");
             cachedV = super.getValue();
         }
         return cachedV;

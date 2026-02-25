@@ -8,7 +8,7 @@ public class Metod {
             try {
                 int number = Integer.parseInt(s);
                 return true;
-            } catch (NumberFormatException var2) {
+            } catch (NumberFormatException e) {
                 System.out.println("Вы ввели не число!(или были введены помимо числа пробелы)");
                 return false;
             }
@@ -28,5 +28,25 @@ public class Metod {
          }
          int num = Integer.parseInt(n);
          return num;
+    }
+
+    //проверка на строку
+    public static boolean isVoid(String s) {
+        if (s==null || s.isEmpty()) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    //цикл проверок, пока число не подойдёт
+    public static String chekStr() {
+        Scanner scanner = new Scanner(System.in);
+        String n = scanner.nextLine();
+        while (!Metod.isVoid(n)) {
+            System.out.print("Введите новое значение: ");
+            n = scanner.nextLine();
+        }
+        return n;
     }
 }
