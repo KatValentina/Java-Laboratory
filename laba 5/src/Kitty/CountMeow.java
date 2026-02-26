@@ -4,10 +4,6 @@ public class CountMeow implements Meowable{
     private final Meowable original;
     private int count=0;
 
-    public CountMeow(Meowable original) {
-        this.original = original;
-    }
-
     @Override
     public void meow() {
         count++;
@@ -17,4 +13,9 @@ public class CountMeow implements Meowable{
     public int getCount() {
         return count;
     }
+
+    public CountMeow(Meowable original) {
+        this.original = original;
+    }
+
 }

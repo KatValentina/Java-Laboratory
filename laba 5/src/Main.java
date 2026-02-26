@@ -1,6 +1,8 @@
 import Fraction.*;
 import Kitty.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -48,8 +50,33 @@ public class Main {
                 System.out.print("Кот мяукал " + ((CountMeow) m).getCount() + " раз");
                 break;
             case "3":
-                break;
-            case "4":
+                // Ввод списка
+                System.out.print("Введите количество элементов списка: ");
+                int n = Metod.chekInt();
+                try {
+                    if (n<0) {
+                        throw  new IllegalStateException("Размер списка отрицателен");
+                    }
+                    List<String> L = new ArrayList<>();
+                    if (n==0) {
+                        System.out.println("Список пуст, из него нельзя ничего удалить");
+                    } else {
+                        System.out.println("Введите элементы списка");
+                        for (int i = 0; i < n; i++) {
+                            System.out.print("Элемент: ");
+                            L.add(Metod.chekStr());
+                        }
+                        // Ввод элемента E
+                        System.out.print("Введите элемент E, который нужно удалить: ");
+                        String E = Metod.chekStr();
+                        // Удаление всех элементов E
+                        Metod.removeE(L, E);
+                        // Вывод результата
+                        System.out.println("Список после удаления: "+L);
+                    }
+                } catch (IllegalStateException e) {
+                    System.out.println(e.getMessage());;
+                }
                 break;
             default:
                 System.out.println("Нет задания");

@@ -1,3 +1,4 @@
+import java.util.List;
 import java.util.Scanner;
 
 public class Metod {
@@ -30,7 +31,7 @@ public class Metod {
          return num;
     }
 
-    //проверка на строку
+    //проверка на ввод строки
     public static boolean isVoid(String s) {
         if (s==null || s.isEmpty()) {
             return false;
@@ -48,5 +49,10 @@ public class Metod {
             n = scanner.nextLine();
         }
         return n;
+    }
+
+    //удаление определённого элемента из списка
+    public static <T> void removeE(List<T> list, T element) {
+        list.removeIf(x -> x.equals(element));
     }
 }
