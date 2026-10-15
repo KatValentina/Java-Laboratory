@@ -5,7 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6d0195bb-5e82-461c-8ab3-a6005d95a203" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Box.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Box.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Num.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Num.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../laba 5/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../laba 5/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../laba 5/src/Metod.java" beforeDir="false" afterPath="$PROJECT_DIR$/../laba 5/src/Metod.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,9 +44,19 @@
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Валентина/Desktop/Лабы по Java/Java-Laboratory/laba 4&quot;,
     &quot;onboarding.tips.debug.path&quot;: &quot;C:/Users/Валентина/Desktop/Лабы по Java/Java-Laboratory/laba 4/src/Main.java&quot;
   }
 }</component>
+  <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="laba 4" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="6d0195bb-5e82-461c-8ab3-a6005d95a203" name="Changes" comment="" />

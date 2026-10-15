@@ -9,6 +9,7 @@ public class Num implements Comparable<Num>{
         this.value = n;
     }
 
+    @Override
     public int compare (Num n) {
        return this.value - n.value;
     }

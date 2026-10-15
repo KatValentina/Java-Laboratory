@@ -9,6 +9,10 @@ public class Box<T> {
         this.object = null;
     }
 
+    public Box(T n) {
+        this.object = n;
+    }
+
     //проверка на заполненность
     public boolean isEmpty(){
         if (this.object == null) {
